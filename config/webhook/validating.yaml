@@ -1,0 +1,24 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: kubefleet-batchrun-validation
+  annotations:
+    cert-manager.io/inject-ca-from: kubefleet-system/kubefleet-webhook
+webhooks:
+- name: vbatchrun.batch.kubefleet.dev
+  admissionReviewVersions: [v1]
+  sideEffects: None
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  timeoutSeconds: 10
+  clientConfig:
+    service:
+      name: kubefleet-webhook
+      namespace: kubefleet-system
+      path: /validate-batch-kubefleet-dev-v1alpha1-batchrun
+  rules:
+  - apiGroups: [batch.kubefleet.dev]
+    apiVersions: [v1alpha1]
+    operations: [CREATE, UPDATE]
+    resources: [batchruns]
+    scope: Namespaced

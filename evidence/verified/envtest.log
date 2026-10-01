@@ -1,0 +1,34 @@
+=== RUN   TestAPIAndTLSAdmission
+=== RUN   TestAPIAndTLSAdmission/zero-cpu
+=== RUN   TestAPIAndTLSAdmission/negative-memory
+=== RUN   TestAPIAndTLSAdmission/limit-below-request
+=== RUN   TestAPIAndTLSAdmission/invalid-parallelism
+=== RUN   TestAPIAndTLSAdmission/invalid-completions
+=== RUN   TestAPIAndTLSAdmission/invalid-timeouts
+=== RUN   TestAPIAndTLSAdmission/unapproved-registry
+=== RUN   TestAPIAndTLSAdmission/real-name-collision
+=== RUN   TestAPIAndTLSAdmission/real-already-exists-recovery
+=== RUN   TestAPIAndTLSAdmission/real-status-conflict-preserves-stop
+--- PASS: TestAPIAndTLSAdmission (8.61s)
+    --- PASS: TestAPIAndTLSAdmission/zero-cpu (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/negative-memory (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/limit-below-request (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-parallelism (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-completions (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-timeouts (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/unapproved-registry (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/real-name-collision (0.03s)
+    --- PASS: TestAPIAndTLSAdmission/real-already-exists-recovery (0.03s)
+    --- PASS: TestAPIAndTLSAdmission/real-status-conflict-preserves-stop (0.11s)
+=== RUN   TestReconciliationAndStatusWatches
+    controller_test.go:173: one Job UID 0bf07f23-5f85-4f90-bb66-c84303f9310f; Workload and Job status-only watches verified
+--- PASS: TestReconciliationAndStatusWatches (6.32s)
+=== RUN   TestGateRealAPIConflictAndTrust
+    gate_test.go:128: real resourceVersion conflict preserved another check and quota admission
+=== RUN   TestGateRealAPIConflictAndTrust/queued
+=== RUN   TestGateRealAPIConflictAndTrust/BatchRun-owned
+--- PASS: TestGateRealAPIConflictAndTrust (6.68s)
+    --- PASS: TestGateRealAPIConflictAndTrust/queued (0.04s)
+    --- PASS: TestGateRealAPIConflictAndTrust/BatchRun-owned (0.06s)
+PASS
+ok  	kubefleet.local/kubefleet/test/envtest	23.445s

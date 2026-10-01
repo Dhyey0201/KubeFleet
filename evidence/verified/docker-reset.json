@@ -1,0 +1,14 @@
+{
+  "ServerVersion": "29.0.1",
+  "NCPU": 8,
+  "MemTotal": 7267520512,
+  "Containers": 0,
+  "Images": 0,
+  "Driver": "overlayfs",
+  "hostFreeDiskBytes": 49232461824,
+  "cleanup": "Docker VM disk recreated after user authorization",
+  "containers": "",
+  "images": "",
+  "volumes": "",
+  "storage": "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE\nImages          0         0         0B        0B\nContainers      0         0         0B        0B\nLocal Volumes   0         0         0B        0B\nBuild Cache     0         0         0B        0B"
+}

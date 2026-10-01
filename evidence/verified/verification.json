@@ -1,0 +1,53 @@
+{
+  "localChecks": {
+    "format": "passed",
+    "allFiveHostBuilds": "passed",
+    "unit": "passed",
+    "race": "passed",
+    "vet": "passed",
+    "lint": "passed; envtest logging-only issue fixed with focused rerun",
+    "generatedDrift": "passed",
+    "wrongContextCleanupGuard": "passed",
+    "renderedServerSchemas": "passed",
+    "envtestTLSConcurrencyAndUIDPrecondition": "passed",
+    "kindIntegration": "all scenarios passed across the full attempt plus corrected quota rerun",
+    "freshBootstrapExistingTools": "passed",
+    "emptyDockerSetup": "passed",
+    "guardedTeardownRebuild": "passed",
+    "publicDemo": "passed",
+    "sourceCoverage": "recorded for review"
+  },
+  "experiments": {
+    "smokeMixes": 5,
+    "profilesPerMix": 3,
+    "created": 180,
+    "succeeded": 180,
+    "collectorGapReports": 0,
+    "logicalJobsPerObservedRun": 1,
+    "controllerObjectCountsPassed": [
+      100,
+      500
+    ],
+    "controllerPodsAndCompletions": 0,
+    "controller500ProjectionSeconds": 109.193750041,
+    "controller500CleanupSeconds": 187.398658458,
+    "controller500CleanupBudgetSeconds": 310,
+    "prior500CleanupSafetyStops": 2,
+    "actualCPUAndWaste": "observed lower bounds only; exact totals unknown"
+  },
+  "blockers": [
+    "Full 60\u2013120-run/five-repetition comparisons need >=8 Docker CPUs and >=16 GiB Docker memory; this host has 8 GiB physical RAM.",
+    "No tested commit or remote repository/CI execution exists.",
+    "Tool-free-machine bootstrap is unverified; reproduced setup used pinned tools already installed."
+  ],
+  "evidence": {
+    "source": "evidence/verified/final-source-checks.log",
+    "envtest": "evidence/verified/envtest-final.log",
+    "kindAttempt": "evidence/verified/all-e2e-attempt.log",
+    "quotaFix": "evidence/verified/aggregate-quota-fixed.log",
+    "demo": "evidence/verified/setup-demo.log",
+    "smoke": "evidence/verified/smoke-suite.json",
+    "controller": "evidence/verified/controller-load.json"
+  },
+  "packageScope": "source plus compact evidence; development checkpoint, no publication or full-release claim"
+}

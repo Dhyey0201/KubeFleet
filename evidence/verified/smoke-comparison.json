@@ -1,0 +1,149 @@
+{
+  "status": "smoke-only-initial-watch-gaps",
+  "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+  "repetitionsPerProfile": 1,
+  "profiles": {
+    "isolated": {
+      "schemaVersion": "v1",
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "created": 12,
+      "submissionFailures": 0,
+      "succeeded": 12,
+      "failed": 0,
+      "cancelled": 0,
+      "unfinished": 0,
+      "admissionWaitSeconds": {
+        "samples": 12,
+        "median": 7,
+        "p95": 14
+      },
+      "completionSeconds": {
+        "samples": 12,
+        "median": 12,
+        "p95": 19
+      },
+      "makespanSeconds": 20,
+      "completedThroughputPerSecond": 0.6,
+      "admittedRequestedCPUSeconds": null,
+      "actualCPUSeconds": null,
+      "preemptionCPUWasteSeconds": null,
+      "podStarts": 12,
+      "evictions": 0,
+      "quality": [
+        "actual_cpu_not_collected_by_object_watch",
+        "collector_watch_or_read_gap",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "requested_cpu_integral_not_reconstructed"
+      ],
+      "outcomes": {
+        "0b935e66-5515-4192-b1f6-c4b1dc255bed": "Succeeded",
+        "0f855f38-6e34-4311-8f67-8de3cafbd129": "Succeeded",
+        "1a028c47-5348-4f39-afed-0fe6d0769d8a": "Succeeded",
+        "279df811-b872-4f3e-9494-a2e0225a96fe": "Succeeded",
+        "28424253-0fd4-42c5-a7af-24805eb6055e": "Succeeded",
+        "2fd2392a-9882-461e-b389-96b25c7248b9": "Succeeded",
+        "43e6dd79-d1da-472c-a7bf-32fa4044c3b6": "Succeeded",
+        "54556706-e673-4f54-b9a2-c7fce842fc05": "Succeeded",
+        "877b6fb0-bb7a-46a2-86cb-78ee5795e9b6": "Succeeded",
+        "a6996a69-5986-4747-92cf-5443fd132d37": "Succeeded",
+        "c103dbee-50da-4b11-bf8e-e92b9e6522df": "Succeeded",
+        "d4f54206-ac20-4a0d-af13-c057366a6e16": "Succeeded"
+      }
+    },
+    "shared": {
+      "schemaVersion": "v1",
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "created": 12,
+      "submissionFailures": 0,
+      "succeeded": 12,
+      "failed": 0,
+      "cancelled": 0,
+      "unfinished": 0,
+      "admissionWaitSeconds": {
+        "samples": 12,
+        "median": 7,
+        "p95": 15
+      },
+      "completionSeconds": {
+        "samples": 12,
+        "median": 12,
+        "p95": 19
+      },
+      "makespanSeconds": 21,
+      "completedThroughputPerSecond": 0.5714285714285714,
+      "admittedRequestedCPUSeconds": null,
+      "actualCPUSeconds": null,
+      "preemptionCPUWasteSeconds": null,
+      "podStarts": 12,
+      "evictions": 0,
+      "quality": [
+        "actual_cpu_not_collected_by_object_watch",
+        "collector_watch_or_read_gap",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "requested_cpu_integral_not_reconstructed"
+      ],
+      "outcomes": {
+        "11fb769f-daf4-4622-8aa9-d830fc51543d": "Succeeded",
+        "1af29dd4-94cf-473b-b618-8d6e5547030f": "Succeeded",
+        "21904f8d-7a21-4b01-934e-7ca1af2d8daf": "Succeeded",
+        "841f5476-e1f1-4497-bc01-af1665ec3919": "Succeeded",
+        "8aacd054-dd9d-49b0-8cf0-d7991d9fd7bb": "Succeeded",
+        "b94ae45c-fa27-46f7-ab2b-995057199603": "Succeeded",
+        "ccb44572-c005-43ce-8317-f2831e55bbbe": "Succeeded",
+        "d5826f58-8535-4245-a258-b231a4897b05": "Succeeded",
+        "d79f2ac3-108f-4f1b-93e6-0ea301bec480": "Succeeded",
+        "e3a5ad63-a207-48db-8fe2-26be1edbe5bd": "Succeeded",
+        "f6ae31e2-b8b7-4e4c-9de1-e35adf11566c": "Succeeded",
+        "ff10a4cd-b26b-465f-bbd4-13dbe80963bb": "Succeeded"
+      }
+    },
+    "priority": {
+      "schemaVersion": "v1",
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "created": 12,
+      "submissionFailures": 0,
+      "succeeded": 12,
+      "failed": 0,
+      "cancelled": 0,
+      "unfinished": 0,
+      "admissionWaitSeconds": {
+        "samples": 12,
+        "median": 6.5,
+        "p95": 14
+      },
+      "completionSeconds": {
+        "samples": 12,
+        "median": 11,
+        "p95": 19
+      },
+      "makespanSeconds": 21,
+      "completedThroughputPerSecond": 0.5714285714285714,
+      "admittedRequestedCPUSeconds": null,
+      "actualCPUSeconds": null,
+      "preemptionCPUWasteSeconds": null,
+      "podStarts": 12,
+      "evictions": 0,
+      "quality": [
+        "actual_cpu_not_collected_by_object_watch",
+        "collector_watch_or_read_gap",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "requested_cpu_integral_not_reconstructed"
+      ],
+      "outcomes": {
+        "14188f33-d56f-4a9d-814c-8c163a8f7006": "Succeeded",
+        "1d9f234d-ce4a-4726-b711-7bdaf30855c0": "Succeeded",
+        "2be22cc1-dc7c-42b7-b062-3680f860bf67": "Succeeded",
+        "3850d86b-793d-4857-bcdb-c69dd63e0648": "Succeeded",
+        "5757ed67-402a-4f7a-ae70-78125221ffc6": "Succeeded",
+        "63430fb6-09b9-48fd-86f0-f9d8fdfa7f0c": "Succeeded",
+        "9088a9af-2e46-4e16-83fe-11c33fb1e73b": "Succeeded",
+        "95c94484-fbff-4b11-8f16-80913669a576": "Succeeded",
+        "c6183afd-01e9-49b8-98e9-212f6ffd9381": "Succeeded",
+        "de2922b7-a266-4eb7-a5b0-697478ce7ae1": "Succeeded",
+        "ec08cea9-4905-499e-aae4-a419fb4da93e": "Succeeded",
+        "ed1e5d08-5780-44a3-82d4-72890b92f78b": "Succeeded"
+      }
+    }
+  },
+  "fullBenchmark": "blocked: physical RAM 8 GiB, Docker memory below mandatory 16 GiB"
+}

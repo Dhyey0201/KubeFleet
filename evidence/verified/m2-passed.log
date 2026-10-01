@@ -1,0 +1,22 @@
+=== RUN   TestM2LifecycleFailures
+=== RUN   TestM2LifecycleFailures/worker-failure-backoff-0
+=== RUN   TestM2LifecycleFailures/worker-failure-backoff-1
+=== RUN   TestM2LifecycleFailures/execution-deadline
+=== RUN   TestM2LifecycleFailures/absolute-queued-deadline
+=== RUN   TestM2LifecycleFailures/deletion-garbage-collection
+--- PASS: TestM2LifecycleFailures (54.31s)
+    --- PASS: TestM2LifecycleFailures/worker-failure-backoff-0 (3.44s)
+    --- PASS: TestM2LifecycleFailures/worker-failure-backoff-1 (14.23s)
+    --- PASS: TestM2LifecycleFailures/execution-deadline (3.83s)
+    --- PASS: TestM2LifecycleFailures/absolute-queued-deadline (29.83s)
+    --- PASS: TestM2LifecycleFailures/deletion-garbage-collection (2.98s)
+=== RUN   TestM2CrashBoundaries
+=== RUN   TestM2CrashBoundaries/after-job-create
+=== RUN   TestM2CrashBoundaries/after-stop-intent
+--- PASS: TestM2CrashBoundaries (82.13s)
+    --- PASS: TestM2CrashBoundaries/after-job-create (40.92s)
+    --- PASS: TestM2CrashBoundaries/after-stop-intent (41.21s)
+=== RUN   TestM2LeaderFailover
+--- PASS: TestM2LeaderFailover (42.00s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	179.575s

@@ -1,0 +1,32 @@
+schemaVersion: v1
+selectionDate: '2026-09-30'
+status: native-compatibility-verified-release-incomplete
+go: 1.26.8
+controllerRuntime: v0.21.0
+kubernetesModules: v0.33.3
+kueue: v0.13.4
+kueueAPI: kueue.x-k8s.io/v1beta1
+kind: v0.29.0
+kindNodeImage: kindest/node:v1.33.1@sha256:050072256b9a903bd914c0b2866828150cb229cea0efe5892e2b644d5dd3b34f
+kubectl: v1.34.2
+kustomize: v5.7.1
+certManager: v1.18.2
+controllerGen: v0.18.0
+kubebuilder: not-used-manual-controller-runtime-project
+prometheus: v3.5.0
+grafana: v12.1.1
+kubeStateMetrics: v2.16.0
+linter: v2.4.0
+envtest: v1.33.0
+buildImageDigests: scratch-no-base-image
+charts: not-used
+
+imageDigests:
+  registry.k8s.io/kueue/kueue:v0.13.4: sha256:3b37ef8ae1855065fbbe3fffe0b8860434557668cd8cae43c9040f1b561b0c9d
+  quay.io/prometheus/prometheus:v3.5.0: sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996
+  grafana/grafana:12.1.1: sha256:a1701c2180249361737a99a01bc770db39381640e4d631825d38ff4535efa47d
+  registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0: sha256:e750cd4b43f782e3106537026c2995cac85d921aedea334e1d16caad7877c360
+  quay.io/jetstack/cert-manager-controller:v1.18.2: sha256:81316365dc0b713eddddfbf9b8907b2939676e6c0e12beec0f9625f202a36d16
+  quay.io/jetstack/cert-manager-webhook:v1.18.2: sha256:9431f0d8b5103b06cc6138564f471ac02c6b2638c2fa399d81e28a01d817ae73
+  quay.io/jetstack/cert-manager-cainjector:v1.18.2: sha256:af59e01ad9756a1034fbf948330e75702e5d79b3577f323f6a9947707ba262fc
+envtestDarwinArm64SHA512: 623dc02432905e58738c5611b8b0808437762755003dbaee266ded27dfe9a37d5a75ed6578ac4fbb261c7cd19c0199a7428de77b40b2f881912a4468c4d98d61

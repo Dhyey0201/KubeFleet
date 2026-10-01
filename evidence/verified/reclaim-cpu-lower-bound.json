@@ -1,0 +1,77 @@
+{
+  "jobUID": "a0699417-d2fc-47d7-b5ce-a024c08bbbc2",
+  "observedLostCPUSecondsLowerBound": 0.12092,
+  "quality": [
+    "actual_cumulative_cpu_before_confirmed_preemption",
+    "missing_final_sample_lower_bound",
+    "not_total_cluster_cpu_or_full_benchmark"
+  ],
+  "samples": [
+    {
+      "cpuSeconds": 0.035939,
+      "observedAt": "2026-10-01T04:38:48.498045Z",
+      "podName": "e2e-1790829521421258000-borrower-52f737fe0a08c9e9-5s5qd",
+      "podUID": "b65d9ba3-a638-458e-9a75-fb723c690fa0",
+      "query": "max(container_cpu_usage_seconds_total{namespace=\"team-a\",pod=\"e2e-1790829521421258000-borrower-52f737fe0a08c9e9-5s5qd\",container=\"worker\"})",
+      "source": {
+        "data": {
+          "result": [
+            {
+              "metric": {},
+              "value": [
+                1790829528.494,
+                "0.035939"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    },
+    {
+      "cpuSeconds": 0.048091,
+      "observedAt": "2026-10-01T04:38:48.644259Z",
+      "podName": "e2e-1790829521421258000-borrower-52f737fe0a08c9e9-7jrps",
+      "podUID": "eb01e2c4-95b2-47d8-ba85-d5b6e4f2e126",
+      "query": "max(container_cpu_usage_seconds_total{namespace=\"team-a\",pod=\"e2e-1790829521421258000-borrower-52f737fe0a08c9e9-7jrps\",container=\"worker\"})",
+      "source": {
+        "data": {
+          "result": [
+            {
+              "metric": {},
+              "value": [
+                1790829528.64,
+                "0.048091"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    },
+    {
+      "cpuSeconds": 0.03689,
+      "observedAt": "2026-10-01T04:38:48.846904Z",
+      "podName": "e2e-1790829521421258000-borrower-52f737fe0a08c9e9-trprk",
+      "podUID": "dd3b202a-f71c-4467-b4e2-b856fe1580d0",
+      "query": "max(container_cpu_usage_seconds_total{namespace=\"team-a\",pod=\"e2e-1790829521421258000-borrower-52f737fe0a08c9e9-trprk\",container=\"worker\"})",
+      "source": {
+        "data": {
+          "result": [
+            {
+              "metric": {},
+              "value": [
+                1790829528.843,
+                "0.03689"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    }
+  ]
+}

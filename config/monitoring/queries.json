@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Runs by phase",
+    "query": "sum by(phase)(max by(namespace,phase)(kubefleet_batchruns_current))"
+  },
+  {
+    "title": "Gate pending",
+    "query": "max by(namespace)(kubefleet_gate_pending_current)"
+  },
+  {
+    "title": "Cleanup pending",
+    "query": "max by(namespace)(kubefleet_cleanup_pending_current)"
+  },
+  {
+    "title": "Manager reconcile rate",
+    "query": "sum by(controller)(rate(controller_runtime_reconcile_total[1m]))"
+  },
+  {
+    "title": "Worker CPU actually consumed",
+    "query": "sum by(namespace)(rate(container_cpu_usage_seconds_total{namespace=~\"team-[abc]\",container=\"worker\"}[1m]))"
+  },
+  {
+    "title": "Queue wait p95",
+    "query": "histogram_quantile(0.95,sum by(le,queue)(rate(kubefleet_queue_wait_observed_seconds_bucket[5m])))"
+  },
+  {
+    "title": "Manager up",
+    "query": "up{job=\"kubefleet-manager\"}"
+  },
+  {
+    "title": "Kueue up",
+    "query": "up{job=\"kueue\"}"
+  },
+  {
+    "title": "Worker Pods",
+    "query": "sum by(namespace,phase)(kube_pod_status_phase{namespace=~\"team-[abc]\"})"
+  }
+]

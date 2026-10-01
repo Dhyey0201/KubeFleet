@@ -1,0 +1,11 @@
+apiVersion: batch.kubefleet.dev/v1alpha1
+kind: BatchRun
+metadata:
+  generateName: kubefleet-admission-probe-
+  namespace: team-a
+spec:
+  queueName: team-a
+  image: kubefleet-worker:compat
+  resources:
+    requests: {cpu: 250m, memory: 64Mi}
+    limits: {cpu: 250m, memory: 128Mi}

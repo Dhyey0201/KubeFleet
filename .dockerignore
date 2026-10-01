@@ -1,0 +1,4 @@
+**
+!bin/
+!bin/worker-linux
+!bin/manager-linux

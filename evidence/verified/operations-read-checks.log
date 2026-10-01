@@ -1,0 +1,89 @@
+HostFreeDiskBytes=28630175744
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/go/bin/go
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/kind
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/kubectl
+/usr/local/bin/docker
+go version go1.26.8 darwin/arm64
+kind v0.29.0 go1.24.2 darwin/arm64
+clientVersion:
+  buildDate: "2025-11-11T19:10:16Z"
+  compiler: gc
+  gitCommit: 8cc511e399b929453cd98ae65b419c3cc227ec79
+  gitTreeState: clean
+  gitVersion: v1.34.2
+  goVersion: go1.24.9
+  major: "1"
+  minor: "34"
+  platform: darwin/arm64
+kustomizeVersion: v5.7.1
+
+Docker=29.0.1 CPUs=8 MemoryBytes=7267520512
+NAME                      STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+kubefleet-control-plane   Ready    control-plane   11m   v1.33.1   172.18.0.4    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+kubefleet-worker          Ready    <none>          11m   v1.33.1   172.18.0.3    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+kubefleet-worker2         Ready    <none>          11m   v1.33.1   172.18.0.2    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+NAMESPACE              NAME                                              PHASE
+cert-manager           cert-manager-cainjector-5fdbfb5bd9-zqz2j          Running
+cert-manager           cert-manager-f88d8864f-7dnnq                      Running
+cert-manager           cert-manager-webhook-5c656654dc-bbnhd             Running
+kube-system            coredns-674b8bbfcf-qxxxj                          Running
+kube-system            coredns-674b8bbfcf-vrqvl                          Running
+kube-system            etcd-kubefleet-control-plane                      Running
+kube-system            kindnet-6phpw                                     Running
+kube-system            kindnet-96grt                                     Running
+kube-system            kindnet-9777q                                     Running
+kube-system            kube-apiserver-kubefleet-control-plane            Running
+kube-system            kube-controller-manager-kubefleet-control-plane   Running
+kube-system            kube-proxy-5x6gp                                  Running
+kube-system            kube-proxy-hcv7t                                  Running
+kube-system            kube-proxy-tqkfp                                  Running
+kube-system            kube-scheduler-kubefleet-control-plane            Running
+kubefleet-monitoring   grafana-8689797f58-2zkrz                          Running
+kubefleet-monitoring   kube-state-metrics-9485bb478-l2j8c                Running
+kubefleet-monitoring   prometheus-79975f485f-f4jl7                       Running
+kubefleet-system       kubefleet-manager-5d6789cdf5-mz5xk                Running
+kueue-system           kueue-controller-manager-6f686c66c4-97ns8         Running
+local-path-storage     local-path-provisioner-7dc846544d-v6z6x           Running
+NAMESPACE   NAME     CLUSTERQUEUE   PENDING WORKLOADS   ADMITTED WORKLOADS
+team-a      team-a   team-a         0                   0
+team-b      team-b   team-b         0                   0
+team-c      team-c   team-c         0                   0
+NAME                                 COHORT   PENDING WORKLOADS
+clusterqueue.kueue.x-k8s.io/team-a            0
+clusterqueue.kueue.x-k8s.io/team-b            0
+clusterqueue.kueue.x-k8s.io/team-c            0
+
+NAME                                                   AGE
+admissioncheck.kueue.x-k8s.io/kubefleet-prerequisite   10m
+
+NAME                                                 AGE
+prerequisitegatepolicy.batch.kubefleet.dev/default   7m25s
+No resources found in team-a namespace.
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/kubefleet-manager   1/1     1            1           10m
+
+NAME                                                      HOLDER                                                                    AGE
+lease.coordination.k8s.io/kubefleet.batch.kubefleet.dev   kubefleet-manager-5d6789cdf5-mz5xk_07f91b5f-9719-4302-a5ba-d363df5775b6   10m
+
+NAME                                            READY   SECRET                  AGE
+certificate.cert-manager.io/kubefleet-webhook   True    kubefleet-webhook-tls   10m
+{"level":"info","ts":"2026-10-01T05:28:34Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832507201140000-high","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832507201140000-high","reconcileID":"18305111-94a7-4b9d-8a6f-3238aa40f4e9","namespace":"team-a","name":"e2e-1790832507201140000-high","uid":"9c2dd739-f712-48f3-a72f-000827ba2372","phase":"Cancelled","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:35Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832507201140000-low","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832507201140000-low","reconcileID":"0df4d914-5880-49a1-87e9-2fae2435fbbe","namespace":"team-a","name":"e2e-1790832507201140000-low","uid":"71056b17-bb88-4d16-8448-97115343e5ea","phase":"Stopping","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:35Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832507201140000-low","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832507201140000-low","reconcileID":"3a907c64-c2e2-45ec-9352-07245a61f9a3","namespace":"team-a","name":"e2e-1790832507201140000-low","uid":"71056b17-bb88-4d16-8448-97115343e5ea","phase":"Cancelled","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:38Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"a915dd88-4e9f-4971-8abd-fc8828861e96","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Queued","reason":"WaitingForQuota"}
+{"level":"info","ts":"2026-10-01T05:28:38Z","msg":"prerequisite decision","controller":"prerequisite-gate","controllerGroup":"kueue.x-k8s.io","controllerKind":"Workload","Workload":{"name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","namespace":"team-a"},"namespace":"team-a","name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","reconcileID":"82d50d3b-78e2-4df7-88d4-3b73791c9aa2","namespace":"team-a","name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","uid":"8ce2097e-9cb6-4f90-b913-ec590be7c6a7","state":"Ready","reason":"NotRequired"}
+{"level":"info","ts":"2026-10-01T05:28:38Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"f66ecea7-c064-4266-b1eb-4e9b1f45997d","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Admitted","reason":"Admitted"}
+{"level":"info","ts":"2026-10-01T05:28:39Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"4e59be4c-d1bf-49ff-9746-03eb20516c57","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Running","reason":"Running"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-owner","namespace":"team-b"},"namespace":"team-b","name":"e2e-1790832516293526000-owner","reconcileID":"5750aa9e-2143-4b9b-b2f1-3625d3fb2958","namespace":"team-b","name":"e2e-1790832516293526000-owner","uid":"69c6a529-7ed2-4cce-8148-733dc78629a5","phase":"Queued","reason":"WaitingForQuota"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"prerequisite decision","controller":"prerequisite-gate","controllerGroup":"kueue.x-k8s.io","controllerKind":"Workload","Workload":{"name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","namespace":"team-a"},"namespace":"team-a","name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","reconcileID":"94bb5450-c620-4c84-b992-28d4f4a6dead","namespace":"team-a","name":"job-e2e-1790832516293526000-borrower-eafc2dfffbc47cfe-5cbba","uid":"8ce2097e-9cb6-4f90-b913-ec590be7c6a7","state":"Ready","reason":"NotRequired"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"prerequisite decision","controller":"prerequisite-gate","controllerGroup":"kueue.x-k8s.io","controllerKind":"Workload","Workload":{"name":"job-e2e-1790832516293526000-owner-b901d1da69648f90-dca2a","namespace":"team-b"},"namespace":"team-b","name":"job-e2e-1790832516293526000-owner-b901d1da69648f90-dca2a","reconcileID":"5e6114e3-06f2-4751-944d-2a8260fd1360","namespace":"team-b","name":"job-e2e-1790832516293526000-owner-b901d1da69648f90-dca2a","uid":"34fa3328-6635-4f4e-8145-8203a10e1760","state":"Ready","reason":"NotRequired"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"31ee7ae1-b655-4f03-b20c-29d79e0c0c3e","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Admitted","reason":"Admitted"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"7d2b353c-b622-4e1b-ae8b-26f0f7e907a0","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Queued","reason":"WaitingForQuota"}
+{"level":"info","ts":"2026-10-01T05:28:44Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-owner","namespace":"team-b"},"namespace":"team-b","name":"e2e-1790832516293526000-owner","reconcileID":"66cf4336-6f66-4fcb-bb3f-d20f60b06fa2","namespace":"team-b","name":"e2e-1790832516293526000-owner","uid":"69c6a529-7ed2-4cce-8148-733dc78629a5","phase":"Admitted","reason":"Admitted"}
+{"level":"info","ts":"2026-10-01T05:28:45Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-owner","namespace":"team-b"},"namespace":"team-b","name":"e2e-1790832516293526000-owner","reconcileID":"c250a453-9579-4f70-b004-306fe51beba3","namespace":"team-b","name":"e2e-1790832516293526000-owner","uid":"69c6a529-7ed2-4cce-8148-733dc78629a5","phase":"Running","reason":"Running"}
+{"level":"info","ts":"2026-10-01T05:28:45Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-owner","namespace":"team-b"},"namespace":"team-b","name":"e2e-1790832516293526000-owner","reconcileID":"a4312b31-029d-462b-bde5-bbe20706f99c","namespace":"team-b","name":"e2e-1790832516293526000-owner","uid":"69c6a529-7ed2-4cce-8148-733dc78629a5","phase":"Stopping","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:45Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"6cc598ee-c55c-4113-bb50-f5dca0b11157","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Admitted","reason":"Admitted"}
+{"level":"info","ts":"2026-10-01T05:28:46Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"b9a1e9b2-c317-4903-9f52-8345dac128f6","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Running","reason":"Running"}
+{"level":"info","ts":"2026-10-01T05:28:47Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-owner","namespace":"team-b"},"namespace":"team-b","name":"e2e-1790832516293526000-owner","reconcileID":"9aab9765-03ab-4301-9d14-4da76bd8b5ee","namespace":"team-b","name":"e2e-1790832516293526000-owner","uid":"69c6a529-7ed2-4cce-8148-733dc78629a5","phase":"Cancelled","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:48Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"5368ae50-c69f-4a81-80de-a4c320f09ae3","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Stopping","reason":"UserCancelled"}
+{"level":"info","ts":"2026-10-01T05:28:49Z","msg":"run transition","controller":"batchrun","controllerGroup":"batch.kubefleet.dev","controllerKind":"BatchRun","BatchRun":{"name":"e2e-1790832516293526000-borrower","namespace":"team-a"},"namespace":"team-a","name":"e2e-1790832516293526000-borrower","reconcileID":"0a5f83a1-94c0-4963-847b-74e8b571dc01","namespace":"team-a","name":"e2e-1790832516293526000-borrower","uid":"387133e1-0c2f-4f0e-9d63-c9281c38fb84","phase":"Cancelled","reason":"UserCancelled"}

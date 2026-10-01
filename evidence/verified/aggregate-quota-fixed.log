@@ -1,0 +1,4 @@
+=== RUN   TestM2AggregateParallelism
+--- PASS: TestM2AggregateParallelism (9.52s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	10.156s

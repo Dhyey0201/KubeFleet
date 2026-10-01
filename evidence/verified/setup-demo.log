@@ -1,0 +1,43 @@
+source scripts/env.sh; mkdir -p bin; for name in manager kubefleet worker loadgen collector; do go build -trimpath -o bin/$name ./cmd/$name; done
+=== RUN   TestRealBatchRunLifecycle
+=== RUN   TestRealBatchRunLifecycle/successful-real-worker
+=== RUN   TestRealBatchRunLifecycle/cancel-running
+=== RUN   TestRealBatchRunLifecycle/cancel-queued
+=== RUN   TestRealBatchRunLifecycle/lost-job
+--- PASS: TestRealBatchRunLifecycle (17.24s)
+    --- PASS: TestRealBatchRunLifecycle/successful-real-worker (7.22s)
+    --- PASS: TestRealBatchRunLifecycle/cancel-running (5.20s)
+    --- PASS: TestRealBatchRunLifecycle/cancel-queued (1.00s)
+    --- PASS: TestRealBatchRunLifecycle/lost-job (3.00s)
+PASS
+ok  	kubefleet.local/kubefleet/test/smoke	18.146s
+=== RUN   TestM5CLI
+--- PASS: TestM5CLI (15.11s)
+=== RUN   TestM4PrerequisiteGate
+=== RUN   TestM4PrerequisiteGate/completed-and-latched
+=== RUN   TestM4PrerequisiteGate/pending-retry-backoff-success
+=== RUN   TestM4PrerequisiteGate/PrerequisiteUIDMismatch
+=== RUN   TestM4PrerequisiteGate/PrerequisiteNotAllowed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteFailed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded
+=== RUN   TestM4PrerequisiteGate/policy-inactive-and-restored
+--- PASS: TestM4PrerequisiteGate (54.92s)
+    --- PASS: TestM4PrerequisiteGate/completed-and-latched (13.06s)
+    --- PASS: TestM4PrerequisiteGate/pending-retry-backoff-success (18.89s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteUIDMismatch (5.63s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteNotAllowed (5.63s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteFailed (4.88s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded (6.58s)
+    --- PASS: TestM4PrerequisiteGate/policy-inactive-and-restored (0.25s)
+=== RUN   TestM3Profiles
+=== RUN   TestM3Profiles/isolated
+=== RUN   TestM3Profiles/shared
+=== RUN   TestM3Profiles/within-queue-preemption
+=== RUN   TestM3Profiles/cohort-reclaim
+--- PASS: TestM3Profiles (47.29s)
+    --- PASS: TestM3Profiles/isolated (10.26s)
+    --- PASS: TestM3Profiles/shared (12.03s)
+    --- PASS: TestM3Profiles/within-queue-preemption (9.09s)
+    --- PASS: TestM3Profiles/cohort-reclaim (13.85s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	118.042s

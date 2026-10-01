@@ -1,0 +1,6 @@
+KubeFleet includes generated Kubernetes and Kueue schemas and a pinned upstream
+Kueue deployment manifest under test/compatibility. Kueue v0.13.4 and Kubernetes
+sources are licensed under Apache License 2.0; upstream copyright and license
+notices remain in their source/modules. cert-manager v1.18.2 deployment manifests
+in config/dependencies retain the upstream Apache License 2.0 notices. These
+vendored artifacts are dependencies, not authored KubeFleet implementations.

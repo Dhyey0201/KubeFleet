@@ -1,0 +1,1 @@
+Passed: destructive cluster cleanup refused a wrong context before any server/Docker call.

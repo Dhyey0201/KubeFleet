@@ -1,0 +1,20 @@
+?   	kubefleet.local/kubefleet/api/v1alpha1	[no test files]
+?   	kubefleet.local/kubefleet/cmd/collector	[no test files]
+?   	kubefleet.local/kubefleet/cmd/kubefleet	[no test files]
+?   	kubefleet.local/kubefleet/cmd/loadgen	[no test files]
+?   	kubefleet.local/kubefleet/cmd/manager	[no test files]
+?   	kubefleet.local/kubefleet/cmd/worker	[no test files]
+ok  	kubefleet.local/kubefleet/internal/cli	(cached)
+ok  	kubefleet.local/kubefleet/internal/controller	(cached)
+ok  	kubefleet.local/kubefleet/internal/experiment	1.818s
+?   	kubefleet.local/kubefleet/internal/faults	[no test files]
+ok  	kubefleet.local/kubefleet/internal/gate	(cached)
+ok  	kubefleet.local/kubefleet/internal/materialize	(cached)
+ok  	kubefleet.local/kubefleet/internal/observability	(cached)
+ok  	kubefleet.local/kubefleet/internal/validation	(cached)
+?   	kubefleet.local/kubefleet/internal/webhook	[no test files]
+ok  	kubefleet.local/kubefleet/internal/worker	(cached)
+2026/09/30 21:00:43 failed to create modcache index dir: mkdir /Users/dhyeypatel/Library/Caches/goimports: operation not permitted
+0 issues.
+source scripts/env.sh; mkdir -p bin; for name in manager kubefleet worker loadgen collector; do go build -trimpath -o bin/$name ./cmd/$name; done
+Passed: destructive cluster cleanup refused a wrong context before any server/Docker call.

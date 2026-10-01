@@ -1,0 +1,12 @@
+=== RUN   TestRealBatchRunLifecycle
+=== RUN   TestRealBatchRunLifecycle/successful-real-worker
+=== RUN   TestRealBatchRunLifecycle/cancel-running
+=== RUN   TestRealBatchRunLifecycle/cancel-queued
+=== RUN   TestRealBatchRunLifecycle/lost-job
+--- PASS: TestRealBatchRunLifecycle (15.24s)
+    --- PASS: TestRealBatchRunLifecycle/successful-real-worker (5.62s)
+    --- PASS: TestRealBatchRunLifecycle/cancel-running (4.79s)
+    --- PASS: TestRealBatchRunLifecycle/cancel-queued (1.00s)
+    --- PASS: TestRealBatchRunLifecycle/lost-job (3.00s)
+PASS
+ok  	kubefleet.local/kubefleet/test/smoke	16.183s

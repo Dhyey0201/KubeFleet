@@ -1,0 +1,5 @@
+# Build the static binary using `make worker-linux` before this image.
+FROM scratch
+COPY bin/worker-linux /worker
+USER 65532:65532
+ENTRYPOINT ["/worker"]

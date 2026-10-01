@@ -1,0 +1,40 @@
+=== RUN   TestM5CLI
+--- PASS: TestM5CLI (21.43s)
+=== RUN   TestM5WebhookOutage
+--- PASS: TestM5WebhookOutage (20.62s)
+=== RUN   TestM5PodDiagnostics
+=== RUN   TestM5PodDiagnostics/PodUnschedulable
+=== RUN   TestM5PodDiagnostics/ImagePullFailure
+--- PASS: TestM5PodDiagnostics (9.62s)
+    --- PASS: TestM5PodDiagnostics/PodUnschedulable (2.85s)
+    --- PASS: TestM5PodDiagnostics/ImagePullFailure (5.03s)
+=== RUN   TestM5Monitoring
+--- PASS: TestM5Monitoring (7.98s)
+=== RUN   TestM5TenantSecurity
+=== RUN   TestM5TenantSecurity/create-own
+=== RUN   TestM5TenantSecurity/cancel-own
+=== RUN   TestM5TenantSecurity/cross-namespace
+=== RUN   TestM5TenantSecurity/forge-status
+=== RUN   TestM5TenantSecurity/create-job
+=== RUN   TestM5TenantSecurity/modify-prerequisite
+=== RUN   TestM5TenantSecurity/workload-status
+=== RUN   TestM5TenantSecurity/read-secrets
+=== RUN   TestM5TenantSecurity/read-policy
+=== RUN   TestM5TenantSecurity/write-policy
+=== RUN   TestM5TenantSecurity/write-queue
+=== RUN   TestM5TenantSecurity/pod-exec
+--- PASS: TestM5TenantSecurity (3.23s)
+    --- PASS: TestM5TenantSecurity/create-own (0.00s)
+    --- PASS: TestM5TenantSecurity/cancel-own (0.00s)
+    --- PASS: TestM5TenantSecurity/cross-namespace (0.00s)
+    --- PASS: TestM5TenantSecurity/forge-status (0.00s)
+    --- PASS: TestM5TenantSecurity/create-job (0.00s)
+    --- PASS: TestM5TenantSecurity/modify-prerequisite (0.00s)
+    --- PASS: TestM5TenantSecurity/workload-status (0.00s)
+    --- PASS: TestM5TenantSecurity/read-secrets (0.00s)
+    --- PASS: TestM5TenantSecurity/read-policy (0.00s)
+    --- PASS: TestM5TenantSecurity/write-policy (0.00s)
+    --- PASS: TestM5TenantSecurity/write-queue (0.19s)
+    --- PASS: TestM5TenantSecurity/pod-exec (0.20s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	63.583s

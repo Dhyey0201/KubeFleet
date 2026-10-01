@@ -1,0 +1,20 @@
+=== RUN   TestM4PrerequisiteGate
+=== RUN   TestM4PrerequisiteGate/completed-and-latched
+=== RUN   TestM4PrerequisiteGate/pending-retry-backoff-success
+=== RUN   TestM4PrerequisiteGate/PrerequisiteUIDMismatch
+=== RUN   TestM4PrerequisiteGate/PrerequisiteNotAllowed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteFailed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded
+=== RUN   TestM4PrerequisiteGate/policy-inactive-and-restored
+--- PASS: TestM4PrerequisiteGate (49.29s)
+    --- PASS: TestM4PrerequisiteGate/completed-and-latched (10.33s)
+    --- PASS: TestM4PrerequisiteGate/pending-retry-backoff-success (16.97s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteUIDMismatch (5.04s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteNotAllowed (5.09s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteFailed (5.07s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded (6.55s)
+    --- PASS: TestM4PrerequisiteGate/policy-inactive-and-restored (0.24s)
+=== RUN   TestM4ReadyCrashRecovery
+--- PASS: TestM4ReadyCrashRecovery (47.17s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	97.134s

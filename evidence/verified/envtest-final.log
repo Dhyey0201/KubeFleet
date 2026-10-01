@@ -1,0 +1,78 @@
+=== RUN   TestAPIAndTLSAdmission
+=== RUN   TestAPIAndTLSAdmission/zero-cpu
+=== RUN   TestAPIAndTLSAdmission/negative-memory
+=== RUN   TestAPIAndTLSAdmission/limit-below-request
+=== RUN   TestAPIAndTLSAdmission/invalid-parallelism
+=== RUN   TestAPIAndTLSAdmission/invalid-completions
+=== RUN   TestAPIAndTLSAdmission/invalid-timeouts
+=== RUN   TestAPIAndTLSAdmission/unapproved-registry
+=== RUN   TestAPIAndTLSAdmission/real-name-collision
+=== RUN   TestAPIAndTLSAdmission/real-already-exists-recovery
+=== RUN   TestAPIAndTLSAdmission/real-status-conflict-preserves-stop
+--- PASS: TestAPIAndTLSAdmission (10.90s)
+    --- PASS: TestAPIAndTLSAdmission/zero-cpu (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/negative-memory (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/limit-below-request (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-parallelism (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-completions (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/invalid-timeouts (0.00s)
+    --- PASS: TestAPIAndTLSAdmission/unapproved-registry (0.01s)
+    --- PASS: TestAPIAndTLSAdmission/real-name-collision (0.03s)
+    --- PASS: TestAPIAndTLSAdmission/real-already-exists-recovery (0.03s)
+    --- PASS: TestAPIAndTLSAdmission/real-status-conflict-preserves-stop (0.11s)
+=== RUN   TestCleanupUIDPreconditionSurvivesReplacementAfterList
+    cleanup_test.go:77: real API rejected old-UID deletion after list; replacement remained intact
+--- PASS: TestCleanupUIDPreconditionSurvivesReplacementAfterList (6.46s)
+=== RUN   TestReconciliationAndStatusWatches
+    controller_test.go:173: one Job UID f4175995-3670-40a0-b690-31dec822b720; Workload and Job status-only watches verified
+--- PASS: TestReconciliationAndStatusWatches (6.65s)
+=== RUN   TestGateRealAPIConflictAndTrust
+[controller-runtime] log.SetLogger(...) was never called; logs will not be displayed.
+Detected at:
+	>  goroutine 753 [running]:
+	>  runtime/debug.Stack()
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/go/src/runtime/debug/stack.go:26 +0x6c
+	>  sigs.k8s.io/controller-runtime/pkg/log.eventuallyFulfillRoot()
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/log/log.go:60 +0xc4
+	>  sigs.k8s.io/controller-runtime/pkg/log.(*delegatingLogSink).WithValues(0xc000137780, {0x0, 0x0, 0x0})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/log/deleg.go:168 +0x3c
+	>  github.com/go-logr/logr.Logger.WithValues(...)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/github.com/go-logr/logr@v1.4.3/logr.go:332
+	>  sigs.k8s.io/controller-runtime/pkg/log.FromContext({0x1055495c8, 0x1065bcb00}, {0x0, 0x0, 0x0})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/log/log.go:98 +0xb8
+	>  sigs.k8s.io/controller-runtime/pkg/log.(*KubeAPIWarningLogger).HandleWarningHeaderWithContext(0xc000950888, {0x1055495c8, 0x1065bcb00}, 0x12b, {0xb?, 0x103e0ef39?}, {0xc0004e4d00, 0x43})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/log/warning_handler.go:49 +0x54
+	>  k8s.io/client-go/rest.handleWarnings({0x1055495c8, 0x1065bcb00}, 0xc000992120, {0x10552a820, 0xc000950888})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/warnings.go:187 +0x11c
+	>  k8s.io/client-go/rest.(*Request).transformResponse(0xc000179080, {0x1055495c8, 0x1065bcb00}, 0xc000fcad80, 0xc00050a3c0)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1427 +0x438
+	>  k8s.io/client-go/rest.(*Request).Do.func1(0xc00050a3c0, 0xc000fcad80)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1301 +0x60
+	>  k8s.io/client-go/rest.(*Request).request.func3.1(...)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1271
+	>  k8s.io/client-go/rest.(*Request).request.func3(0xc000fcad80, 0xc000911528, {0x10554a0b0, 0xc00084c100}, 0xc000911390, 0xc000179080, 0xc00050a3c0, {0x0, 0x0}, 0x10551feb8)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1278 +0xe8
+	>  k8s.io/client-go/rest.(*Request).request(0xc000179080, {0x1055495c8, 0x1065bcb00}, 0xc000911528)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1280 +0x624
+	>  k8s.io/client-go/rest.(*Request).Do(0xc000179080, {0x1055495c8, 0x1065bcb00})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/k8s.io/client-go@v0.33.3/rest/request.go:1300 +0x148
+	>  sigs.k8s.io/controller-runtime/pkg/client.(*typedClient).Create(0xc000774480, {0x1055495c8, 0x1065bcb00}, {0x105560728, 0xc0007806c8}, {0x0, 0x0, 0x0?})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/client/typed_client.go:48 +0x588
+	>  sigs.k8s.io/controller-runtime/pkg/client.(*client).Create(0xc000774480, {0x1055495c8, 0x1065bcb00}, {0x105560728, 0xc0007806c8}, {0x0, 0x0, 0x0})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.cache/gopath/pkg/mod/sigs.k8s.io/controller-runtime@v0.21.0/pkg/client/client.go:278 +0x144
+	>  kubefleet.local/kubefleet/test/envtest.TestGateRealAPIConflictAndTrust.func2({0x105560728, 0xc0007806c8})
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/test/envtest/gate_test.go:51 +0x88
+	>  kubefleet.local/kubefleet/test/envtest.TestGateRealAPIConflictAndTrust(0xc00040d208)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/test/envtest/gate_test.go:91 +0x1e08
+	>  testing.tRunner(0xc00040d208, 0x10551e340)
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/go/src/testing/testing.go:2036 +0x168
+	>  created by testing.(*T).Run in goroutine 1
+	>  	/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/go/src/testing/testing.go:2101 +0x7c0
+    gate_test.go:128: real resourceVersion conflict preserved another check and quota admission
+=== RUN   TestGateRealAPIConflictAndTrust/queued
+=== RUN   TestGateRealAPIConflictAndTrust/BatchRun-owned
+--- PASS: TestGateRealAPIConflictAndTrust (7.22s)
+    --- PASS: TestGateRealAPIConflictAndTrust/queued (0.05s)
+    --- PASS: TestGateRealAPIConflictAndTrust/BatchRun-owned (0.04s)
+PASS
+ok  	kubefleet.local/kubefleet/test/envtest	33.105s

@@ -1,0 +1,98 @@
+=== RUN   TestM5CLI
+--- PASS: TestM5CLI (12.50s)
+=== RUN   TestM5WebhookOutage
+--- PASS: TestM5WebhookOutage (20.66s)
+=== RUN   TestM5PodDiagnostics
+=== RUN   TestM5PodDiagnostics/PodUnschedulable
+=== RUN   TestM5PodDiagnostics/ImagePullFailure
+--- PASS: TestM5PodDiagnostics (9.39s)
+    --- PASS: TestM5PodDiagnostics/PodUnschedulable (2.47s)
+    --- PASS: TestM5PodDiagnostics/ImagePullFailure (5.17s)
+=== RUN   TestM4PrerequisiteGate
+=== RUN   TestM4PrerequisiteGate/completed-and-latched
+=== RUN   TestM4PrerequisiteGate/pending-retry-backoff-success
+=== RUN   TestM4PrerequisiteGate/PrerequisiteUIDMismatch
+=== RUN   TestM4PrerequisiteGate/PrerequisiteNotAllowed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteFailed
+=== RUN   TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded
+=== RUN   TestM4PrerequisiteGate/policy-inactive-and-restored
+--- PASS: TestM4PrerequisiteGate (51.51s)
+    --- PASS: TestM4PrerequisiteGate/completed-and-latched (11.61s)
+    --- PASS: TestM4PrerequisiteGate/pending-retry-backoff-success (16.81s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteUIDMismatch (5.15s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteNotAllowed (5.07s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteFailed (5.06s)
+    --- PASS: TestM4PrerequisiteGate/PrerequisiteDeadlineExceeded (7.56s)
+    --- PASS: TestM4PrerequisiteGate/policy-inactive-and-restored (0.24s)
+=== RUN   TestM4ReadyCrashRecovery
+--- PASS: TestM4ReadyCrashRecovery (49.52s)
+=== RUN   TestM5Monitoring
+--- PASS: TestM5Monitoring (24.67s)
+=== RUN   TestM2PersistenceIdentityAndIdle
+--- PASS: TestM2PersistenceIdentityAndIdle (32.96s)
+=== RUN   TestM2AggregateParallelism
+    persistence_test.go:145: parallel requests were not aggregated: 0
+--- FAIL: TestM2AggregateParallelism (3.22s)
+=== RUN   TestM3Profiles
+=== RUN   TestM3Profiles/isolated
+=== RUN   TestM3Profiles/shared
+=== RUN   TestM3Profiles/within-queue-preemption
+=== RUN   TestM3Profiles/cohort-reclaim
+--- PASS: TestM3Profiles (45.67s)
+    --- PASS: TestM3Profiles/isolated (11.70s)
+    --- PASS: TestM3Profiles/shared (11.01s)
+    --- PASS: TestM3Profiles/within-queue-preemption (7.70s)
+    --- PASS: TestM3Profiles/cohort-reclaim (13.12s)
+=== RUN   TestM2LifecycleFailures
+=== RUN   TestM2LifecycleFailures/worker-failure-backoff-0
+=== RUN   TestM2LifecycleFailures/worker-failure-backoff-1
+=== RUN   TestM2LifecycleFailures/execution-deadline
+=== RUN   TestM2LifecycleFailures/absolute-queued-deadline
+=== RUN   TestM2LifecycleFailures/deletion-garbage-collection
+=== RUN   TestM2LifecycleFailures/inactive-queue-deadline
+--- PASS: TestM2LifecycleFailures (88.03s)
+    --- PASS: TestM2LifecycleFailures/worker-failure-backoff-0 (4.03s)
+    --- PASS: TestM2LifecycleFailures/worker-failure-backoff-1 (14.03s)
+    --- PASS: TestM2LifecycleFailures/execution-deadline (2.66s)
+    --- PASS: TestM2LifecycleFailures/absolute-queued-deadline (30.03s)
+    --- PASS: TestM2LifecycleFailures/deletion-garbage-collection (2.97s)
+    --- PASS: TestM2LifecycleFailures/inactive-queue-deadline (34.31s)
+=== RUN   TestM2CrashBoundaries
+=== RUN   TestM2CrashBoundaries/after-job-create
+=== RUN   TestM2CrashBoundaries/after-stop-intent
+--- PASS: TestM2CrashBoundaries (80.86s)
+    --- PASS: TestM2CrashBoundaries/after-job-create (40.79s)
+    --- PASS: TestM2CrashBoundaries/after-stop-intent (40.07s)
+=== RUN   TestM2LeaderFailover
+--- PASS: TestM2LeaderFailover (43.18s)
+=== RUN   TestM5TenantSecurity
+=== RUN   TestM5TenantSecurity/create-own
+=== RUN   TestM5TenantSecurity/cancel-own
+=== RUN   TestM5TenantSecurity/cross-namespace
+=== RUN   TestM5TenantSecurity/forge-status
+=== RUN   TestM5TenantSecurity/create-job
+=== RUN   TestM5TenantSecurity/modify-prerequisite
+=== RUN   TestM5TenantSecurity/workload-status
+=== RUN   TestM5TenantSecurity/read-secrets
+=== RUN   TestM5TenantSecurity/read-policy
+=== RUN   TestM5TenantSecurity/write-policy
+=== RUN   TestM5TenantSecurity/write-queue
+=== RUN   TestM5TenantSecurity/pod-exec
+--- PASS: TestM5TenantSecurity (2.45s)
+    --- PASS: TestM5TenantSecurity/create-own (0.01s)
+    --- PASS: TestM5TenantSecurity/cancel-own (0.00s)
+    --- PASS: TestM5TenantSecurity/cross-namespace (0.00s)
+    --- PASS: TestM5TenantSecurity/forge-status (0.00s)
+    --- PASS: TestM5TenantSecurity/create-job (0.00s)
+    --- PASS: TestM5TenantSecurity/modify-prerequisite (0.00s)
+    --- PASS: TestM5TenantSecurity/workload-status (0.00s)
+    --- PASS: TestM5TenantSecurity/read-secrets (0.00s)
+    --- PASS: TestM5TenantSecurity/read-policy (0.00s)
+    --- PASS: TestM5TenantSecurity/write-policy (0.00s)
+    --- PASS: TestM5TenantSecurity/write-queue (0.18s)
+    --- PASS: TestM5TenantSecurity/pod-exec (0.20s)
+=== RUN   TestM2WorkerSIGTERMLogs
+--- PASS: TestM2WorkerSIGTERMLogs (5.22s)
+FAIL
+FAIL	kubefleet.local/kubefleet/test/e2e	470.521s
+FAIL

@@ -1,0 +1,5 @@
+=== RUN   TestCleanupUIDPreconditionSurvivesReplacementAfterList
+    cleanup_test.go:77: real API rejected old-UID deletion after list; replacement remained intact
+--- PASS: TestCleanupUIDPreconditionSurvivesReplacementAfterList (8.28s)
+PASS
+ok  	kubefleet.local/kubefleet/test/envtest	10.357s

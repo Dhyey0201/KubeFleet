@@ -1,0 +1,615 @@
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "name": "kubefleet-monitoring",
+    "labels": {
+      "pod-security.kubernetes.io/enforce": "restricted"
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ServiceAccount",
+  "metadata": {
+    "name": "prometheus",
+    "namespace": "kubefleet-monitoring"
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ServiceAccount",
+  "metadata": {
+    "name": "kube-state-metrics",
+    "namespace": "kubefleet-monitoring"
+  }
+}
+---
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRole",
+  "metadata": {
+    "name": "kubefleet-prometheus"
+  },
+  "rules": [
+    {
+      "apiGroups": [
+        ""
+      ],
+      "resources": [
+        "nodes",
+        "pods",
+        "services",
+        "endpoints"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch"
+      ]
+    },
+    {
+      "apiGroups": [
+        ""
+      ],
+      "resources": [
+        "nodes/proxy"
+      ],
+      "verbs": [
+        "get"
+      ]
+    },
+    {
+      "nonResourceURLs": [
+        "/metrics"
+      ],
+      "verbs": [
+        "get"
+      ]
+    }
+  ]
+}
+---
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRole",
+  "metadata": {
+    "name": "kubefleet-kube-state-metrics"
+  },
+  "rules": [
+    {
+      "apiGroups": [
+        ""
+      ],
+      "resources": [
+        "nodes",
+        "pods",
+        "namespaces"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch"
+      ]
+    },
+    {
+      "apiGroups": [
+        "batch"
+      ],
+      "resources": [
+        "jobs"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch"
+      ]
+    },
+    {
+      "apiGroups": [
+        "apps"
+      ],
+      "resources": [
+        "deployments",
+        "daemonsets",
+        "statefulsets"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch"
+      ]
+    }
+  ]
+}
+---
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRoleBinding",
+  "metadata": {
+    "name": "kubefleet-prometheus"
+  },
+  "roleRef": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "ClusterRole",
+    "name": "kubefleet-prometheus"
+  },
+  "subjects": [
+    {
+      "kind": "ServiceAccount",
+      "name": "prometheus",
+      "namespace": "kubefleet-monitoring"
+    }
+  ]
+}
+---
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRoleBinding",
+  "metadata": {
+    "name": "kubefleet-kube-state-metrics"
+  },
+  "roleRef": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "ClusterRole",
+    "name": "kubefleet-kube-state-metrics"
+  },
+  "subjects": [
+    {
+      "kind": "ServiceAccount",
+      "name": "kube-state-metrics",
+      "namespace": "kubefleet-monitoring"
+    }
+  ]
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "prometheus",
+    "namespace": "kubefleet-monitoring"
+  },
+  "data": {
+    "prometheus.yaml": "global:\n  scrape_interval: 5s\n  evaluation_interval: 10s\nrule_files: [/etc/prometheus/alerts.yaml]\nscrape_configs:\n- job_name: prometheus\n  static_configs: [{targets: [localhost:9090]}]\n- job_name: kubefleet-manager\n  kubernetes_sd_configs: [{role: pod}]\n  relabel_configs:\n  - {source_labels: [__meta_kubernetes_namespace], action: keep, regex: kubefleet-system}\n  - {source_labels: [__meta_kubernetes_pod_label_app], action: keep, regex: kubefleet-manager}\n  - {source_labels: [__meta_kubernetes_pod_container_port_number], action: keep, regex: '8081'}\n  - {source_labels: [__meta_kubernetes_pod_ip], target_label: __address__, replacement: '$1:8080'}\n  - {source_labels: [__meta_kubernetes_pod_name], target_label: pod}\n- job_name: kueue\n  scheme: https\n  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n  tls_config: {insecure_skip_verify: true}\n  kubernetes_sd_configs: [{role: pod}]\n  relabel_configs:\n  - {source_labels: [__meta_kubernetes_namespace], action: keep, regex: kueue-system}\n  - {source_labels: [__meta_kubernetes_pod_container_port_number], action: keep, regex: '8443'}\n- job_name: kube-state-metrics\n  static_configs: [{targets: [kube-state-metrics:8080]}]\n- job_name: kubelet-cadvisor\n  scheme: https\n  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n  tls_config: {ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt}\n  kubernetes_sd_configs: [{role: node}]\n  relabel_configs:\n  - {target_label: __address__, replacement: kubernetes.default.svc:443}\n  - {source_labels: [__meta_kubernetes_node_name], target_label: __metrics_path__, replacement: '/api/v1/nodes/$1/proxy/metrics/cadvisor'}\n  - {source_labels: [__meta_kubernetes_node_name], target_label: node}\n",
+    "alerts.yaml": "groups:\n- name: kubefleet\n  rules:\n  - alert: KubeFleetControllerUnavailable\n    expr: sum(up{job=\"kubefleet-manager\"}) < 1 or absent(up{job=\"kubefleet-manager\"})\n    for: 1m\n    labels: {severity: critical}\n    annotations: {summary: 'No manager metrics endpoint is healthy; inspect readiness and leader Lease'}\n  - alert: KubeFleetCleanupDelayed\n    expr: max by(namespace)(kubefleet_cleanup_pending_current) > 0\n    for: 2m\n    labels: {severity: warning}\n    annotations: {summary: 'Durable stop cleanup has remained pending; inspect owned resource finalization'}\n  - alert: KubeFleetGateWaiting\n    expr: max by(namespace)(kubefleet_gate_pending_current) > 0\n    for: 2m\n    labels: {severity: warning}\n    annotations: {summary: 'Prerequisite gate remains pending; inspect preparation and backoff'}\n"
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "grafana-provisioning",
+    "namespace": "kubefleet-monitoring"
+  },
+  "data": {
+    "datasource.yaml": "apiVersion: 1\ndatasources:\n- name: Prometheus\n  uid: prometheus\n  type: prometheus\n  url: http://prometheus:9090\n  access: proxy\n  isDefault: true\n",
+    "dashboards.yaml": "apiVersion: 1\nproviders:\n- name: KubeFleet\n  type: file\n  options:\n    path: /var/lib/grafana/dashboards\n"
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "grafana-dashboard",
+    "namespace": "kubefleet-monitoring"
+  },
+  "data": {
+    "dashboard.json": "{\"title\": \"KubeFleet operations\", \"uid\": \"kubefleet\", \"schemaVersion\": 41, \"version\": 1, \"refresh\": \"5s\", \"time\": {\"from\": \"now-15m\", \"to\": \"now\"}, \"panels\": [{\"id\": 1, \"type\": \"timeseries\", \"title\": \"Runs by phase\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 0, \"y\": 0, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"sum by(phase)(max by(namespace,phase)(kubefleet_batchruns_current))\", \"refId\": \"A\"}]}, {\"id\": 2, \"type\": \"timeseries\", \"title\": \"Gate pending\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 12, \"y\": 0, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"max by(namespace)(kubefleet_gate_pending_current)\", \"refId\": \"A\"}]}, {\"id\": 3, \"type\": \"timeseries\", \"title\": \"Cleanup pending\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 0, \"y\": 8, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"max by(namespace)(kubefleet_cleanup_pending_current)\", \"refId\": \"A\"}]}, {\"id\": 4, \"type\": \"timeseries\", \"title\": \"Manager reconcile rate\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 12, \"y\": 8, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"sum by(controller)(rate(controller_runtime_reconcile_total[1m]))\", \"refId\": \"A\"}]}, {\"id\": 5, \"type\": \"timeseries\", \"title\": \"Worker CPU actually consumed\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 0, \"y\": 16, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"sum by(namespace)(rate(container_cpu_usage_seconds_total{namespace=~\\\"team-[abc]\\\",container=\\\"worker\\\"}[1m]))\", \"refId\": \"A\"}]}, {\"id\": 6, \"type\": \"timeseries\", \"title\": \"Queue wait p95\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 12, \"y\": 16, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"histogram_quantile(0.95,sum by(le,queue)(rate(kubefleet_queue_wait_observed_seconds_bucket[5m])))\", \"refId\": \"A\"}]}, {\"id\": 7, \"type\": \"timeseries\", \"title\": \"Manager up\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 0, \"y\": 24, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"up{job=\\\"kubefleet-manager\\\"}\", \"refId\": \"A\"}]}, {\"id\": 8, \"type\": \"timeseries\", \"title\": \"Kueue up\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 12, \"y\": 24, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"up{job=\\\"kueue\\\"}\", \"refId\": \"A\"}]}, {\"id\": 9, \"type\": \"timeseries\", \"title\": \"Worker Pods\", \"datasource\": {\"type\": \"prometheus\", \"uid\": \"prometheus\"}, \"gridPos\": {\"x\": 0, \"y\": 32, \"w\": 12, \"h\": 8}, \"targets\": [{\"expr\": \"sum by(namespace,phase)(kube_pod_status_phase{namespace=~\\\"team-[abc]\\\"})\", \"refId\": \"A\"}]}]}"
+  }
+}
+---
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "prometheus",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "prometheus"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "prometheus"
+        }
+      },
+      "spec": {
+        "securityContext": {
+          "runAsNonRoot": true,
+          "runAsUser": 65534,
+          "runAsGroup": 65534,
+          "fsGroup": 65534,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "containers": [
+          {
+            "name": "prometheus",
+            "image": "quay.io/prometheus/prometheus:v3.5.0@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996",
+            "ports": [
+              {
+                "containerPort": 9090
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              },
+              "limits": {
+                "cpu": "500m",
+                "memory": "384Mi"
+              }
+            },
+            "securityContext": {
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              }
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/-/ready",
+                "port": 9090
+              },
+              "initialDelaySeconds": 3
+            },
+            "args": [
+              "--config.file=/etc/prometheus/prometheus.yaml",
+              "--storage.tsdb.path=/prometheus",
+              "--storage.tsdb.retention.time=6h",
+              "--storage.tsdb.retention.size=512MB"
+            ],
+            "volumeMounts": [
+              {
+                "name": "config",
+                "mountPath": "/etc/prometheus",
+                "readOnly": true
+              },
+              {
+                "name": "data",
+                "mountPath": "/prometheus"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "config",
+            "configMap": {
+              "name": "prometheus"
+            }
+          },
+          {
+            "name": "data",
+            "emptyDir": {
+              "sizeLimit": "768Mi"
+            }
+          }
+        ],
+        "automountServiceAccountToken": true,
+        "serviceAccountName": "prometheus"
+      }
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "prometheus",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "selector": {
+      "app": "prometheus"
+    },
+    "ports": [
+      {
+        "port": 9090,
+        "targetPort": 9090
+      }
+    ],
+    "type": "ClusterIP"
+  }
+}
+---
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "grafana",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "grafana"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "grafana"
+        }
+      },
+      "spec": {
+        "securityContext": {
+          "runAsNonRoot": true,
+          "runAsUser": 472,
+          "runAsGroup": 472,
+          "fsGroup": 472,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "containers": [
+          {
+            "name": "grafana",
+            "image": "grafana/grafana:12.1.1@sha256:a1701c2180249361737a99a01bc770db39381640e4d631825d38ff4535efa47d",
+            "ports": [
+              {
+                "containerPort": 3000
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              },
+              "limits": {
+                "cpu": "500m",
+                "memory": "384Mi"
+              }
+            },
+            "securityContext": {
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              }
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/api/health",
+                "port": 3000
+              },
+              "initialDelaySeconds": 3
+            },
+            "env": [
+              {
+                "name": "GF_SECURITY_ADMIN_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "grafana-auth",
+                    "key": "password"
+                  }
+                }
+              },
+              {
+                "name": "GF_ANALYTICS_REPORTING_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "GF_ANALYTICS_CHECK_FOR_UPDATES",
+                "value": "false"
+              },
+              {
+                "name": "GF_AUTH_ANONYMOUS_ENABLED",
+                "value": "false"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/grafana"
+              },
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "datasource",
+                "mountPath": "/etc/grafana/provisioning/datasources",
+                "readOnly": true
+              },
+              {
+                "name": "provision",
+                "mountPath": "/etc/grafana/provisioning/dashboards",
+                "readOnly": true
+              },
+              {
+                "name": "dashboard",
+                "mountPath": "/var/lib/grafana/dashboards",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "data",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          },
+          {
+            "name": "tmp",
+            "emptyDir": {
+              "sizeLimit": "64Mi"
+            }
+          },
+          {
+            "name": "datasource",
+            "configMap": {
+              "name": "grafana-provisioning",
+              "items": [
+                {
+                  "key": "datasource.yaml",
+                  "path": "datasource.yaml"
+                }
+              ]
+            }
+          },
+          {
+            "name": "provision",
+            "configMap": {
+              "name": "grafana-provisioning",
+              "items": [
+                {
+                  "key": "dashboards.yaml",
+                  "path": "dashboards.yaml"
+                }
+              ]
+            }
+          },
+          {
+            "name": "dashboard",
+            "configMap": {
+              "name": "grafana-dashboard"
+            }
+          }
+        ],
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "grafana",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "selector": {
+      "app": "grafana"
+    },
+    "ports": [
+      {
+        "port": 3000,
+        "targetPort": 3000
+      }
+    ],
+    "type": "ClusterIP"
+  }
+}
+---
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "kube-state-metrics",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "kube-state-metrics"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "kube-state-metrics"
+        }
+      },
+      "spec": {
+        "securityContext": {
+          "runAsNonRoot": true,
+          "runAsUser": 65534,
+          "runAsGroup": 65534,
+          "fsGroup": 65534,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "containers": [
+          {
+            "name": "kube-state-metrics",
+            "image": "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0@sha256:e750cd4b43f782e3106537026c2995cac85d921aedea334e1d16caad7877c360",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "96Mi"
+              },
+              "limits": {
+                "cpu": "500m",
+                "memory": "384Mi"
+              }
+            },
+            "securityContext": {
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              }
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/healthz",
+                "port": 8080
+              },
+              "initialDelaySeconds": 3
+            },
+            "args": [
+              "--resources=nodes,pods,namespaces,jobs,deployments,daemonsets,statefulsets"
+            ]
+          }
+        ],
+        "volumes": [],
+        "automountServiceAccountToken": true,
+        "serviceAccountName": "kube-state-metrics"
+      }
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "kube-state-metrics",
+    "namespace": "kubefleet-monitoring"
+  },
+  "spec": {
+    "selector": {
+      "app": "kube-state-metrics"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ],
+    "type": "ClusterIP"
+  }
+}

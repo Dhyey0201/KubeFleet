@@ -1,0 +1,12 @@
+=== RUN   TestM3Profiles
+=== RUN   TestM3Profiles/isolated
+=== RUN   TestM3Profiles/shared
+=== RUN   TestM3Profiles/within-queue-preemption
+=== RUN   TestM3Profiles/cohort-reclaim
+--- PASS: TestM3Profiles (43.46s)
+    --- PASS: TestM3Profiles/isolated (13.06s)
+    --- PASS: TestM3Profiles/shared (13.76s)
+    --- PASS: TestM3Profiles/within-queue-preemption (7.86s)
+    --- PASS: TestM3Profiles/cohort-reclaim (6.97s)
+PASS
+ok  	kubefleet.local/kubefleet/test/e2e	44.104s

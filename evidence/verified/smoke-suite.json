@@ -1,0 +1,1958 @@
+{
+  "schemaVersion": "v1",
+  "status": "smoke-only-full-release-incomplete",
+  "repetitionsPerMixAndProfile": 1,
+  "comparisons": [
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044332Z-smoke-balanced",
+      "profile": "isolated",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "configurationSHA256": "2b47ea39045de6b5142484aa518402d64616f4f96d668763a68f190ab9cafc30",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "6cbcef366946d4aaeaf429d2e4ca28132c252741014e25cca018abd9795725ac",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 11
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10,
+              "p95": 16
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 10
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10,
+              "p95": 15
+            },
+            "successfulThroughputPerSecond": 0.23529411764705882
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.227733,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 6,
+          "p95": 13
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 10,
+          "p95": 17
+        },
+        "makespanSeconds": 19,
+        "completedThroughputPerSecond": 0.631578947368421,
+        "admittedRequestedCPUSeconds": 13.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0c349909-6a86-49c5-8323-c6b703288afe": "Succeeded",
+          "0e1935e3-a562-4195-a9cb-d9b2781ff2fc": "Succeeded",
+          "29224321-3a56-4bb0-88c3-da0c58afb06c": "Succeeded",
+          "2fa1dd9a-e115-4786-a117-f409861e531f": "Succeeded",
+          "5394406d-eca3-40e7-9d44-bf172e388d98": "Succeeded",
+          "58648f27-9a03-4a98-860f-410bf5deaba8": "Succeeded",
+          "6cd5095c-3f1d-4a69-b948-101c2de27072": "Succeeded",
+          "721b1c5c-6942-45af-969d-65ccbcd307f1": "Succeeded",
+          "79db19ff-c95e-4863-b775-218a43017cf0": "Succeeded",
+          "80eb41c4-2e6a-426b-8154-9b2b7076f37e": "Succeeded",
+          "8cbd9415-9206-493b-86e7-c644d29885e5": "Succeeded",
+          "c37a87bd-5d57-4307-a27c-07e7ab1416a5": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044332Z-smoke-balanced",
+      "profile": "priority",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "configurationSHA256": "98f92ad932b711e90f129b2b408fe7738c766c8ba626eee14a49ae9844033c58",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "9c8e8e6204c75fe3ed4218e777c4a77f9e5cf8f25f08356e6118bf3b51d4bf36",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7,
+              "p95": 14
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11.5,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6.5,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11.5,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.279002,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 6.5,
+          "p95": 14
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11.5,
+          "p95": 18
+        },
+        "makespanSeconds": 19,
+        "completedThroughputPerSecond": 0.631578947368421,
+        "admittedRequestedCPUSeconds": 13.5,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "041383fe-fe9a-4fab-a534-453fd9f930a6": "Succeeded",
+          "100b8ac7-f3e9-4b07-972e-51ce35c18396": "Succeeded",
+          "32bc7397-effe-4191-aac4-e64a196dd6e1": "Succeeded",
+          "33721d06-3c72-4e63-81a9-4f3fca06186a": "Succeeded",
+          "38123bad-ede0-4fb7-84aa-51d7b25f6409": "Succeeded",
+          "45a58c31-44d4-445d-aa8a-f4381b3433a9": "Succeeded",
+          "6d05e699-ca34-4544-a58a-95d56050925d": "Succeeded",
+          "881aa066-1161-4d6e-b1a9-043c5fc23c2d": "Succeeded",
+          "892f25a9-c305-4766-8ea8-492d2a106306": "Succeeded",
+          "a38cfd3d-5b37-4d64-b7c7-55e3442c7b20": "Succeeded",
+          "c42b3089-51ab-4ab9-8c36-878da58e1868": "Succeeded",
+          "df052917-37a1-43ca-a58b-fa9101522965": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044332Z-smoke-balanced",
+      "profile": "shared",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+      "configurationSHA256": "a8056d49a429967fc5cac2fac6decf6a43a879131e24da78eeffbf28fec7aa13",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "bcacc1a2aed0dc3f10106f0677875a966c67f2b804a0e3b50e6caa22398d0c5b",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.2
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 12
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.23017600000000002,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "3b5c0fe7818dd7b9e8235fd644aa582324aec304aedc36263cab9233c8a66621",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 6,
+          "p95": 13
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11,
+          "p95": 18
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 14.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0b960374-b956-457c-a07c-1a23e14eb55c": "Succeeded",
+          "0c63e423-c504-45ea-aaba-d1f70a71c796": "Succeeded",
+          "227df012-db3f-4801-8d69-eba1d6ff5cdc": "Succeeded",
+          "2b03dd13-6fe2-4637-b59a-083fa0ecb221": "Succeeded",
+          "56b04489-28b4-403e-b23f-614ac14081dd": "Succeeded",
+          "5d28dc47-6dd6-4402-a551-cc7ba12b3059": "Succeeded",
+          "958ac1dd-df85-4125-ba87-c75ee387008c": "Succeeded",
+          "a26e0438-4596-4c24-9005-691e2358e52c": "Succeeded",
+          "bd32e884-17b4-4035-882f-df3200046550": "Succeeded",
+          "c74df15a-f594-4e0e-a5db-ce9225d4b081": "Succeeded",
+          "ca7b8b61-8a80-42f5-b0c3-9b4a5959d7d3": "Succeeded",
+          "df4e4951-7907-491e-a3ee-1a82b9565df1": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044531Z-smoke-asymmetric",
+      "profile": "isolated",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+      "configurationSHA256": "2b47ea39045de6b5142484aa518402d64616f4f96d668763a68f190ab9cafc30",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "b923c108410472c284d14200d636a4e5559b63d27ffde1dbbe14a607eb7fec4a",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 12,
+            "succeeded": 12,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 12,
+              "median": 25.5,
+              "p95": 52
+            },
+            "completionSeconds": {
+              "samples": 12,
+              "median": 30.5,
+              "p95": 55
+            },
+            "successfulThroughputPerSecond": 0.21818181818181817
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.187458,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 25.5,
+          "p95": 52
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 30.5,
+          "p95": 55
+        },
+        "makespanSeconds": 55,
+        "completedThroughputPerSecond": 0.21818181818181817,
+        "admittedRequestedCPUSeconds": 13.75,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "02031522-03cc-41a8-abd3-b29a6f9487d5": "Succeeded",
+          "0cf021ed-37db-412a-a56b-612f897719ee": "Succeeded",
+          "3185c829-d744-4401-9518-1d75b6b25947": "Succeeded",
+          "3e349304-f881-427a-9797-cf1e16575561": "Succeeded",
+          "5bcd626d-f8f5-4051-bdf6-7e3b922d26fa": "Succeeded",
+          "6fc7593b-2cc5-4de2-9359-76f8d376505b": "Succeeded",
+          "77d12719-9903-4dd0-ac01-15f91d22f5da": "Succeeded",
+          "932b6be4-12a8-486f-bd6d-314445fb79be": "Succeeded",
+          "c3d6973e-ace2-45fc-9fe4-8ee354aada12": "Succeeded",
+          "d58622ec-87ae-404f-9d0e-be672b678aae": "Succeeded",
+          "e7ffba64-52a7-433d-9c74-4d6ab763f694": "Succeeded",
+          "ffd2cf6d-7eb4-4f2c-85be-07c6165bc0b8": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044531Z-smoke-asymmetric",
+      "profile": "priority",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+      "configurationSHA256": "98f92ad932b711e90f129b2b408fe7738c766c8ba626eee14a49ae9844033c58",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "a9a675497027428ce88fb6afd83fb25594d09cf79e2ff44e30f0445ab3d917d2",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 12,
+            "succeeded": 12,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 12,
+              "median": 7.5,
+              "p95": 15
+            },
+            "completionSeconds": {
+              "samples": 12,
+              "median": 11.5,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.631578947368421
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.116064,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7.5,
+          "p95": 15
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11.5,
+          "p95": 18
+        },
+        "makespanSeconds": 19,
+        "completedThroughputPerSecond": 0.631578947368421,
+        "admittedRequestedCPUSeconds": 13.75,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0ea75821-70e9-49ee-8be0-e9991f37ac59": "Succeeded",
+          "2791bca4-c4c3-43bc-9056-947f945ba5e5": "Succeeded",
+          "4ea8bab4-9e71-468e-8833-ee03587d0088": "Succeeded",
+          "537ad588-0a2c-40c6-932d-09a093bda5a6": "Succeeded",
+          "62c52c61-314a-44a2-8ebd-d43ae4c0af95": "Succeeded",
+          "988ada70-39c1-4ec3-8f44-ad2f583b3d1a": "Succeeded",
+          "afc1dab0-45ff-4b27-8383-13e1b71cbf45": "Succeeded",
+          "beb379da-0940-4eb8-9dd5-b7bad6e2be29": "Succeeded",
+          "c4367abe-7975-414b-aead-1696f185222f": "Succeeded",
+          "d1eb80ce-1b5b-485b-974e-d757a88668a6": "Succeeded",
+          "fa4781c4-398f-40b1-8b01-be544c7f39d0": "Succeeded",
+          "fe3da435-1f79-4336-83f3-da7756f2d3d8": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044531Z-smoke-asymmetric",
+      "profile": "shared",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+      "configurationSHA256": "a8056d49a429967fc5cac2fac6decf6a43a879131e24da78eeffbf28fec7aa13",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "5da9ae259e6cc6349c1482fac09034831c5860828060f1f399e2041ac9fa6916",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 12,
+            "succeeded": 12,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 12,
+              "median": 7.5,
+              "p95": 15
+            },
+            "completionSeconds": {
+              "samples": 12,
+              "median": 12.5,
+              "p95": 20
+            },
+            "successfulThroughputPerSecond": 0.6
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.21499600000000002,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "e62835dcd6609e50533af4a1375b752c20b340ada30a31afe118682230380e54",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7.5,
+          "p95": 15
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 12.5,
+          "p95": 20
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 15,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0bf191d7-eaab-4367-bac5-0e22a394ca46": "Succeeded",
+          "27c959db-e18f-43b3-a8ce-3fdaf46c2e95": "Succeeded",
+          "31466002-bdd3-443c-9bdf-0fb3661f5321": "Succeeded",
+          "542a0ed3-699b-4bad-8005-914845c0aa45": "Succeeded",
+          "6368273a-6564-46ca-b36f-d97b6dcd7b15": "Succeeded",
+          "65de648c-50ed-47d6-b2b8-1df70cc18388": "Succeeded",
+          "88461117-6ab7-40ea-9c8a-dbcdcb44a116": "Succeeded",
+          "ae9f1700-88a0-4190-9944-2d2dc0235726": "Succeeded",
+          "c05fe9f2-d277-4b3c-806e-23c620e11a07": "Succeeded",
+          "c8332028-862f-4457-ab12-a456cc24289f": "Succeeded",
+          "d8190b80-1a2b-4bbc-8d0c-1af9ceccacca": "Succeeded",
+          "e9893040-905c-45c7-ad5a-6ac91a9aceac": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044810Z-smoke-arrival",
+      "profile": "isolated",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+      "configurationSHA256": "2b47ea39045de6b5142484aa518402d64616f4f96d668763a68f190ab9cafc30",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "b24c0ac6e0c04db07cffe44e92f627ad21008519c9b9b084759562daad4d1b7d",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 8,
+            "succeeded": 8,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 8,
+              "median": 15,
+              "p95": 30
+            },
+            "completionSeconds": {
+              "samples": 8,
+              "median": 18.5,
+              "p95": 35
+            },
+            "successfulThroughputPerSecond": 0.22857142857142856
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10.5,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.11735300000000001,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 11,
+          "p95": 30
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 14.5,
+          "p95": 35
+        },
+        "makespanSeconds": 35,
+        "completedThroughputPerSecond": 0.34285714285714286,
+        "admittedRequestedCPUSeconds": 13,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "1c329477-b89b-41a3-b8c1-fe00dfe86355": "Succeeded",
+          "2312a563-4d72-40b6-8893-e485709c63d2": "Succeeded",
+          "4c4b1c61-9d44-4fd1-8197-d6f7a4088e9e": "Succeeded",
+          "7d17fd95-82a2-4998-b599-7769bf3c3264": "Succeeded",
+          "bec18888-24a9-451a-a4e3-281e540ac35f": "Succeeded",
+          "d63debda-d77d-4de0-a531-0761d53f7392": "Succeeded",
+          "d7a5ada7-e584-41a9-87b5-4192c2d0a09c": "Succeeded",
+          "e1e01385-a57c-42dc-bd8a-c2551c4e2225": "Succeeded",
+          "ec1b6100-17ac-4ca0-89ce-99b5efe1184d": "Succeeded",
+          "ed16c62b-2130-47dd-a2c1-d5010b54c7da": "Succeeded",
+          "f1d300ee-1f6c-432c-923d-7a9d698d1e69": "Succeeded",
+          "ff23f361-b7f5-4998-ab81-32a60788c0a8": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044810Z-smoke-arrival",
+      "profile": "priority",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+      "configurationSHA256": "98f92ad932b711e90f129b2b408fe7738c766c8ba626eee14a49ae9844033c58",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_samples_missing",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "76ecbb675dde87b200f7daef702e118113566317c97d2843c0123075357ec434",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 8,
+            "succeeded": 8,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 8,
+              "median": 5,
+              "p95": 15
+            },
+            "completionSeconds": {
+              "samples": 8,
+              "median": 12.5,
+              "p95": 20
+            },
+            "successfulThroughputPerSecond": 0.4
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 8.5,
+              "p95": 16
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 13.5,
+              "p95": 20
+            },
+            "successfulThroughputPerSecond": 0.2
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.144089,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 5.5,
+          "p95": 16
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 13,
+          "p95": 20
+        },
+        "makespanSeconds": 21,
+        "completedThroughputPerSecond": 0.5714285714285714,
+        "admittedRequestedCPUSeconds": 15,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 13,
+        "evictions": 1,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_samples_missing",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "13133df7-a41f-4041-a606-b3694821dbe7": "Succeeded",
+          "1a46ca6e-264c-484e-aab3-b9cf339508ef": "Succeeded",
+          "1d375498-3ec8-4229-a224-e5c492b73cb4": "Succeeded",
+          "20ba78e9-d9df-463e-b1c7-b521ccdb73bb": "Succeeded",
+          "26437b97-f77d-4b24-9c4c-4bdaf84a8662": "Succeeded",
+          "2a2e2e22-270e-49f9-9c62-555065e90708": "Succeeded",
+          "2fa885d3-aa3d-4acc-ae9c-0a5b597f40d6": "Succeeded",
+          "5fbb1470-72d0-45bf-802f-49a75460e3bc": "Succeeded",
+          "67959fc0-5bc8-4c54-9cbf-400e02cf1c92": "Succeeded",
+          "7325cb09-7d08-45b2-99cb-2592d2819e67": "Succeeded",
+          "bf9ce3d2-9eb6-45e6-a158-23f8fe07d53d": "Succeeded",
+          "d59cdab8-e687-4060-bfec-cf7bc045566c": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T044810Z-smoke-arrival",
+      "profile": "shared",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+      "configurationSHA256": "a8056d49a429967fc5cac2fac6decf6a43a879131e24da78eeffbf28fec7aa13",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "7fd4cc25d3471c699555a0033981770de2b07f20c30c95799d859ce307860f94",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 8,
+            "succeeded": 8,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 8,
+              "median": 7.5,
+              "p95": 15
+            },
+            "completionSeconds": {
+              "samples": 8,
+              "median": 12.5,
+              "p95": 20
+            },
+            "successfulThroughputPerSecond": 0.4
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6.5,
+              "p95": 14
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11.5,
+              "p95": 19
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.4374,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "03bfbaf793dc51777896ae7eb1d27dd38b3b3196c1e5082ec73a6b9acbea1cc8",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7,
+          "p95": 15
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 12,
+          "p95": 20
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 14.75,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0e311316-024f-4c57-9c08-b2c724a73ed9": "Succeeded",
+          "0fdf3c37-cba0-450c-9fd5-83856aff5cfc": "Succeeded",
+          "5b54d7c0-0b30-4794-97d1-3a20ecf1afa7": "Succeeded",
+          "64b80fcb-fa28-42ed-b15c-c692882f95be": "Succeeded",
+          "7df99049-a127-4a38-aba9-94e7f2e214c4": "Succeeded",
+          "93b24bc9-a520-4cbc-8c70-3f3f814c64bb": "Succeeded",
+          "93faf2d9-21ff-4405-9e88-91b0937a578a": "Succeeded",
+          "983b93a3-1d71-4b06-bff2-918c5f002e13": "Succeeded",
+          "bddf50b8-c346-4f0a-8a2c-d7395c4b147c": "Succeeded",
+          "c7e5fbe7-f30a-49b4-98e0-046ae09ec89b": "Succeeded",
+          "cc5e2d50-f5ed-4516-a9b6-149cf3525c38": "Succeeded",
+          "da015149-88fa-45ba-81fd-d766e4a6f6e7": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045029Z-smoke-mixed",
+      "profile": "isolated",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+      "configurationSHA256": "2b47ea39045de6b5142484aa518402d64616f4f96d668763a68f190ab9cafc30",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "2e0aa9092a0f11602e3560232dfeb8f58e7476646621ead1bbe3e12a957a950a",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7.5,
+              "p95": 12
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11.5,
+              "p95": 16
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6.5,
+              "p95": 11
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10,
+              "p95": 14
+            },
+            "successfulThroughputPerSecond": 0.25
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 5.5,
+              "p95": 12
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.2
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.035801,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 6,
+          "p95": 12
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11,
+          "p95": 18
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 13.5,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0038888e-1149-4e98-ad6d-2a11108ddea1": "Succeeded",
+          "1b46cb62-80f1-4681-bd34-3b06c03dab2f": "Succeeded",
+          "36600da0-d3e8-428e-9c2b-3ecaac6b662b": "Succeeded",
+          "4334e124-a612-4eb8-a33b-6f3baae20f14": "Succeeded",
+          "47f48523-4384-47db-b64c-0a31284bb499": "Succeeded",
+          "5cb89600-d081-4b75-9090-2b7abbc67da2": "Succeeded",
+          "66a3ba2e-ded9-4d5e-a7a1-baa37fe8ec18": "Succeeded",
+          "74dd6d94-6534-45f1-92a1-4a0b13c715ca": "Succeeded",
+          "7c3cfae6-ee4d-44b9-9ac3-f3e918e871e1": "Succeeded",
+          "a6d85adc-86ac-47ed-ac75-8fa76bccb9ee": "Succeeded",
+          "b08fcccf-7582-4385-8418-91b7e4664dfe": "Succeeded",
+          "d2ee5bcc-4414-4fbb-b4a0-01b63ca80b17": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045029Z-smoke-mixed",
+      "profile": "priority",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+      "configurationSHA256": "98f92ad932b711e90f129b2b408fe7738c766c8ba626eee14a49ae9844033c58",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "01217b614b2949cb978be01ea04e2e854454908bf3aa56b112c45f33d6bb9293",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7,
+              "p95": 14
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11.5,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 8,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 12,
+              "p95": 16
+            },
+            "successfulThroughputPerSecond": 0.2222222222222222
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 12
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 10.5,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.2
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.374915,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7.5,
+          "p95": 14
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11.5,
+          "p95": 18
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 13.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0b488876-8b39-4acc-99a7-3be52b60ea03": "Succeeded",
+          "1b783920-f758-4a34-9aba-e1e7b6839ad2": "Succeeded",
+          "5c10aae5-8f30-4925-b861-5bf857920c1e": "Succeeded",
+          "5e24498e-50dc-4664-a4ef-8211f6a170be": "Succeeded",
+          "6ab4328c-8112-4025-9536-3e7781b121e7": "Succeeded",
+          "870e36a7-e722-4738-be0c-1e9d14787579": "Succeeded",
+          "92403da1-a187-452a-b991-d1a01eab5f6c": "Succeeded",
+          "a45f76cb-f67d-4dc6-8f06-2dd91200ad54": "Succeeded",
+          "bb38eef8-08c8-4259-a8c4-d9b04eb037c4": "Succeeded",
+          "c5d4b9f3-a308-4e4b-8659-3d2ed8f24ea3": "Succeeded",
+          "d0c20adb-b3f1-4521-ad02-e80936002a9d": "Succeeded",
+          "eb2bf124-07c1-4751-b552-6c043a581eee": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045029Z-smoke-mixed",
+      "profile": "shared",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+      "configurationSHA256": "a8056d49a429967fc5cac2fac6decf6a43a879131e24da78eeffbf28fec7aa13",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "94a781a75499af27b23c5d0be52d1039b9399161d1075ef8b6a383a9dd1aedef",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7.5,
+              "p95": 12
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          },
+          "team-b": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 7.5,
+              "p95": 14
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 12,
+              "p95": 17
+            },
+            "successfulThroughputPerSecond": 0.21052631578947367
+          },
+          "team-c": {
+            "created": 4,
+            "succeeded": 4,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 4,
+              "median": 6,
+              "p95": 13
+            },
+            "completionSeconds": {
+              "samples": 4,
+              "median": 11,
+              "p95": 18
+            },
+            "successfulThroughputPerSecond": 0.2
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.20814,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "756cd7b1a821059019b1ada68cc53400d1d66e49f96aa0601ba5032f5f80d4a5",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7,
+          "p95": 14
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11.5,
+          "p95": 18
+        },
+        "makespanSeconds": 20,
+        "completedThroughputPerSecond": 0.6,
+        "admittedRequestedCPUSeconds": 14.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "17f11039-03cf-495a-976e-d84ecedc159b": "Succeeded",
+          "64852379-3cad-453c-a32f-692df48b5260": "Succeeded",
+          "6812345a-9356-4bd1-9390-af16024f9c0a": "Succeeded",
+          "6d30a025-ba88-43ad-9fb3-11ecc553012a": "Succeeded",
+          "8865b16e-eabe-4d8e-9de7-0fe345057f9c": "Succeeded",
+          "8f8c9909-a29d-4d65-8d02-14c1bc2e4ba0": "Succeeded",
+          "9bd7732a-56e7-4b05-a1f9-a5dc67a37cdd": "Succeeded",
+          "a9e46bd2-2a60-45ab-8a65-1baf474d374e": "Succeeded",
+          "b3927f43-ed1d-4e48-8d04-abacad77fb41": "Succeeded",
+          "d898475d-d21b-46a1-af3e-2a93c0180392": "Succeeded",
+          "e4dae683-6818-4016-b292-ad2e4401f2af": "Succeeded",
+          "f6e70e66-ec72-4805-8f75-5ded3989c1ee": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045228Z-smoke-priority",
+      "profile": "isolated",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+      "configurationSHA256": "2b47ea39045de6b5142484aa518402d64616f4f96d668763a68f190ab9cafc30",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "c2bbbf92ef266a88dccdd0c9ce362544244d4057d2951de2a41131f0b7963704",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 11,
+            "succeeded": 11,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 11,
+              "median": 24,
+              "p95": 49
+            },
+            "completionSeconds": {
+              "samples": 11,
+              "median": 29,
+              "p95": 53
+            },
+            "successfulThroughputPerSecond": 0.20754716981132076
+          },
+          "team-b": {
+            "created": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 1,
+              "median": 0,
+              "p95": 0
+            },
+            "completionSeconds": {
+              "samples": 1,
+              "median": 4,
+              "p95": 4
+            },
+            "successfulThroughputPerSecond": 0.25
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.4771640000000001,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 22,
+          "p95": 49
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 26.5,
+          "p95": 53
+        },
+        "makespanSeconds": 53,
+        "completedThroughputPerSecond": 0.22641509433962265,
+        "admittedRequestedCPUSeconds": 14.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0fcc60b6-42c9-4ff5-bc8f-0c30da2ad7d0": "Succeeded",
+          "355a0950-24fe-4aa6-a23a-415b75a6ef87": "Succeeded",
+          "675971ef-2b96-4248-8975-3ba3f0bdf86c": "Succeeded",
+          "68ea4d6c-809a-43fb-9413-f4d0ebd7de35": "Succeeded",
+          "859b90b1-a41b-484c-a84b-b2cafeb58a90": "Succeeded",
+          "927c16d1-f472-483d-bc86-bcb0baaed24f": "Succeeded",
+          "9463fd58-b01b-4ea1-a0ac-b0eed14b76dc": "Succeeded",
+          "a41fea3e-40fb-47ad-b523-8246fb686055": "Succeeded",
+          "b1f2b1d0-6a55-4229-8ce6-225e5d49b4f9": "Succeeded",
+          "cdc4d211-9605-4f8a-b1a4-a47ef1e73d22": "Succeeded",
+          "ed773695-015f-4b74-bbb6-2169362d3ba9": "Succeeded",
+          "f767c5da-a295-4269-90bb-aa53b6b07669": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045228Z-smoke-priority",
+      "profile": "priority",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+      "configurationSHA256": "98f92ad932b711e90f129b2b408fe7738c766c8ba626eee14a49ae9844033c58",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_samples_missing",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "8fb2759db610fecd2f557537fabd771abd3427f6afb9e644129f170f305d6d9e",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 11,
+            "succeeded": 11,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 11,
+              "median": 12,
+              "p95": 19
+            },
+            "completionSeconds": {
+              "samples": 11,
+              "median": 17,
+              "p95": 26
+            },
+            "successfulThroughputPerSecond": 0.4230769230769231
+          },
+          "team-b": {
+            "created": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 1,
+              "median": 1,
+              "p95": 1
+            },
+            "completionSeconds": {
+              "samples": 1,
+              "median": 7,
+              "p95": 7
+            },
+            "successfulThroughputPerSecond": 0.14285714285714285
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.37559200000000004,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 10.5,
+          "p95": 19
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 15.5,
+          "p95": 26
+        },
+        "makespanSeconds": 26,
+        "completedThroughputPerSecond": 0.46153846153846156,
+        "admittedRequestedCPUSeconds": 17.75,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 13,
+        "evictions": 1,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_samples_missing",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0d3a7bc6-3333-4043-82e9-c57997902619": "Succeeded",
+          "293f070c-0bd1-47f1-ab4d-c0c5dd0ca9f0": "Succeeded",
+          "349c3142-d0e7-4dcb-97aa-204e6015b6fb": "Succeeded",
+          "356acd51-6863-4e10-9181-2b00c8611b8d": "Succeeded",
+          "3bfb7593-269d-4ee8-bf07-68bc3cd0e5e8": "Succeeded",
+          "42f185c9-3adf-42d9-aa1e-ab01069ea5d1": "Succeeded",
+          "5cd13f6d-bc9b-46af-a1d4-548ab46ee623": "Succeeded",
+          "7651641c-165e-4224-9208-db7c4ae84729": "Succeeded",
+          "a486c4e7-6634-47db-80b6-c14bfbc66cb7": "Succeeded",
+          "b583060d-3927-413e-9017-ad352a082388": "Succeeded",
+          "c1ed3570-708c-428c-b600-21f5a4630570": "Succeeded",
+          "ceda1b63-0745-410a-a94a-f2902f3aab2f": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    },
+    {
+      "schemaVersion": "v1",
+      "experimentID": "20261001T045228Z-smoke-priority",
+      "profile": "shared",
+      "repetition": 1,
+      "commitSHA": null,
+      "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+      "configurationSHA256": "a8056d49a429967fc5cac2fac6decf6a43a879131e24da78eeffbf28fec7aa13",
+      "versionsLockSHA256": "4493dc5b87cc5ea3387f6acade60b78208d42c2d6b120f3ddf36f984e97d40e0",
+      "workerImageID": "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf",
+      "host": {
+        "ServerVersion": "29.0.1",
+        "NCPU": 8,
+        "MemTotal": 7267520512,
+        "Driver": "overlayfs",
+        "KernelVersion": "6.12.54-linuxkit",
+        "OperatingSystem": "Docker Desktop",
+        "OSType": "linux",
+        "Architecture": "aarch64"
+      },
+      "capacityCaveat": "All kind nodes share one Docker VM; node capacities are not additive host capacity.",
+      "qualityStatus": "complete_with_observation_limits",
+      "qualityReasons": [
+        "cpu_final_sample_and_gaps_not_proven",
+        "cpu_started_pod_samples_missing",
+        "cpu_values_are_observed_cumulative_lower_bounds",
+        "preemption_cpu_waste_requires_per_pod_cpu_samples",
+        "uncommitted_source_snapshot"
+      ],
+      "rawSummarySHA256": "fd43b83bc396e01bc5333e9a2d511aaaeb2a47b6fd080a89c6beee6c93357902",
+      "measurements": {
+        "ambiguousUnresolvedCreates": 0,
+        "teams": {
+          "team-a": {
+            "created": 11,
+            "succeeded": 11,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 11,
+              "median": 9,
+              "p95": 14
+            },
+            "completionSeconds": {
+              "samples": 11,
+              "median": 13,
+              "p95": 19
+            },
+            "successfulThroughputPerSecond": 0.5789473684210527
+          },
+          "team-b": {
+            "created": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "cancelled": 0,
+            "unfinished": 0,
+            "admissionWaitSeconds": {
+              "samples": 1,
+              "median": 3,
+              "p95": 3
+            },
+            "completionSeconds": {
+              "samples": 1,
+              "median": 7,
+              "p95": 7
+            },
+            "successfulThroughputPerSecond": 0.14285714285714285
+          }
+        },
+        "cpuObservedLowerBoundSeconds": 0.11924200000000001,
+        "preemptionCPUWasteObservedLowerBoundSeconds": null,
+        "schemaVersion": "v1",
+        "traceSHA256": "2f997687cb010541d06d1f5dd0b0f1fcd449030c1c4d9e264800b90d942c5e8f",
+        "created": 12,
+        "submissionFailures": 0,
+        "succeeded": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "unfinished": 0,
+        "admissionWaitSeconds": {
+          "samples": 12,
+          "median": 7,
+          "p95": 14
+        },
+        "completionSeconds": {
+          "samples": 12,
+          "median": 11.5,
+          "p95": 19
+        },
+        "makespanSeconds": 19,
+        "completedThroughputPerSecond": 0.631578947368421,
+        "admittedRequestedCPUSeconds": 13.25,
+        "actualCPUSeconds": null,
+        "preemptionCPUWasteSeconds": null,
+        "podStarts": 12,
+        "evictions": 0,
+        "quality": [
+          "cpu_final_sample_and_gaps_not_proven",
+          "cpu_started_pod_samples_missing",
+          "cpu_values_are_observed_cumulative_lower_bounds",
+          "preemption_cpu_waste_requires_per_pod_cpu_samples"
+        ],
+        "outcomes": {
+          "0afb781d-6fe7-43be-a55b-3b7621cdbd8f": "Succeeded",
+          "1f0bdda7-2ff2-42d9-a1f2-718fede347a9": "Succeeded",
+          "53224c42-5637-422f-b784-4abe9dc1a1f2": "Succeeded",
+          "70e1728f-ea9d-4227-95a0-1ad545394b5b": "Succeeded",
+          "76994910-ba21-418b-80ad-22073cf28995": "Succeeded",
+          "8bf4ce05-f795-4e84-8cd5-b93456b1dfc3": "Succeeded",
+          "9682d1f8-cf6d-4b5a-9458-deb557d25aee": "Succeeded",
+          "9cdadb7a-22cd-4ce7-9e88-43e49bd2864c": "Succeeded",
+          "a107c5ee-1d7b-499e-8081-ad5ace38b303": "Succeeded",
+          "ab8cff16-d7aa-4918-84e9-d631de01f933": "Succeeded",
+          "bc02cc60-6847-4bcb-8c01-71b2c94398f2": "Succeeded",
+          "de9f9b8b-438e-4a75-b4f3-58f0feb7d75e": "Succeeded"
+        }
+      },
+      "independentJobIdentityAudit": {
+        "runs": 12,
+        "distinctJobs": 12,
+        "maxJobsPerRun": 1,
+        "missingJobObservations": 0,
+        "duplicateLogicalJobs": 0
+      }
+    }
+  ],
+  "created": 180,
+  "succeeded": 180,
+  "collectorGapReports": 0
+}

@@ -1,0 +1,87 @@
+name: verify
+on:
+  pull_request:
+  push:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        persist-credentials: false
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+      with:
+        path: |
+          .cache/gopath/pkg/mod
+          .cache/go-build
+          .tools/go
+        key: tools-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('versions.lock.yaml', 'go.sum') }}
+    - run: bash scripts/bootstrap.sh
+    - name: Verify
+      run: |
+        mkdir -p evidence/ci
+        source scripts/env.sh
+        test -z "$(gofmt -l api cmd internal test)"
+        make verify test-scripts 2>&1 | tee evidence/ci/verify.log
+        bash scripts/render-check.sh
+        go test -coverprofile=evidence/ci/coverage.out ./...
+    - name: Image build smoke
+      run: |
+        source scripts/env.sh
+        make images
+        CGO_ENABLED=0 GOOS=linux go build -trimpath -o bin/manager-linux ./cmd/manager
+        docker build --provenance=false -f Dockerfile.manager -t kubefleet-manager:dev .
+        docker image inspect kubefleet-manager:dev kubefleet-worker:compat --format '{{.Id}}' > evidence/ci/images.txt
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: always()
+      with:
+        name: source-checks
+        path: |
+          evidence/ci
+          evidence/envtest
+          evidence/rendered
+        retention-days: 14
+  kind:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        persist-credentials: false
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+      with:
+        path: |
+          .cache/gopath/pkg/mod
+          .cache/go-build
+          .tools/go
+        key: tools-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('versions.lock.yaml', 'go.sum') }}
+    - run: bash scripts/bootstrap.sh
+    - name: Dedicated kind smoke and reliability
+      run: |
+        source scripts/env.sh
+        make worker-linux
+        docker build --provenance=false -f Dockerfile.worker -t kubefleet-worker:compat .
+        make cluster-up
+        kind load docker-image --name kubefleet kubefleet-worker:compat
+        make install-development monitoring build
+        bash scripts/fault-image.sh
+        make validate-manifests
+        make smoke e2e
+        make benchmark-smoke
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      if: always()
+      with:
+        name: kind-evidence
+        path: |
+          evidence/e2e
+          evidence/smoke
+          evidence/experiments
+          evidence/profiles
+          evidence/rendered
+        retention-days: 14

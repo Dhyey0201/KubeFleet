@@ -1,0 +1,10 @@
+.tools/
+.cache/
+bin/
+.env
+*.kubeconfig
+evidence/*
+!evidence/README.md
+!evidence/verified/
+!evidence/verified/**
+__pycache__/

@@ -1,0 +1,339 @@
+bash scripts/doctor.sh
+HostFreeDiskBytes=49231335424
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/go/bin/go
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/kind
+/Users/dhyeypatel/Documents/Projects/Kubefleet/.tools/kubectl
+/usr/local/bin/docker
+go version go1.26.8 darwin/arm64
+kind v0.29.0 go1.24.2 darwin/arm64
+clientVersion:
+  buildDate: "2025-11-11T19:10:16Z"
+  compiler: gc
+  gitCommit: 8cc511e399b929453cd98ae65b419c3cc227ec79
+  gitTreeState: clean
+  gitVersion: v1.34.2
+  goVersion: go1.24.9
+  major: "1"
+  minor: "34"
+  platform: darwin/arm64
+kustomizeVersion: v5.7.1
+
+Docker=29.0.1 CPUs=8 MemoryBytes=7267520512
+source scripts/env.sh; mkdir -p bin; CGO_ENABLED=0 GOOS=linux go build -trimpath -o bin/worker-linux ./cmd/worker
+source scripts/env.sh; docker build --provenance=false -f Dockerfile.worker -t kubefleet-worker:compat .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.worker
+#1 transferring dockerfile: 200B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 86B done
+#2 DONE 0.0s
+
+#3 [internal] load build context
+#3 transferring context: 3.23MB 0.0s done
+#3 DONE 0.0s
+
+#4 [1/1] COPY bin/worker-linux /worker
+#4 DONE 0.0s
+
+#5 exporting to image
+#5 exporting layers 0.1s done
+#5 exporting manifest sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf done
+#5 exporting config sha256:a9742eb1a53de93b58be5bc2dfb0cf97f387d4401335699ab54b40570fd886f0 done
+#5 naming to docker.io/library/kubefleet-worker:compat done
+#5 unpacking to docker.io/library/kubefleet-worker:compat 0.0s done
+#5 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/fq968ulmqbkk4pu1t14yp7m76
+No kind clusters found.
+Creating cluster "kubefleet" ...
+ • Ensuring node image (kindest/node:v1.33.1) 🖼  ...
+ ✓ Ensuring node image (kindest/node:v1.33.1) 🖼
+ • Preparing nodes 📦 📦 📦   ...
+ ✓ Preparing nodes 📦 📦 📦 
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+ • Joining worker nodes 🚜  ...
+ ✓ Joining worker nodes 🚜
+ • Waiting ≤ 3m0s for control-plane = Ready ⏳  ...
+ ✓ Waiting ≤ 3m0s for control-plane = Ready ⏳
+ • Ready after 6s 💚
+Set kubectl context to "kind-kubefleet"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kubefleet
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+namespace/kube-system labeled
+namespace/kueue-system serverside-applied
+customresourcedefinition.apiextensions.k8s.io/admissionchecks.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/clusterqueues.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/cohorts.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/localqueues.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/multikueueclusters.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/multikueueconfigs.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/provisioningrequestconfigs.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/resourceflavors.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/topologies.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/workloadpriorityclasses.kueue.x-k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/workloads.kueue.x-k8s.io serverside-applied
+serviceaccount/kueue-controller-manager serverside-applied
+role.rbac.authorization.k8s.io/kueue-leader-election-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-batch-admin-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-batch-user-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-clusterqueue-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-clusterqueue-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-cohort-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-cohort-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-jaxjob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-jaxjob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-job-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-job-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-jobset-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-jobset-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-localqueue-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-localqueue-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-manager-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-metrics-auth-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-metrics-reader serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-mpijob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-mpijob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-paddlejob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-paddlejob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-pending-workloads-cq-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-pending-workloads-lq-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-pytorchjob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-pytorchjob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-raycluster-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-raycluster-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-rayjob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-rayjob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-resourceflavor-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-resourceflavor-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-tfjob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-tfjob-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-topology-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-topology-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-workload-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-workload-viewer-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-xgboostjob-editor-role serverside-applied
+clusterrole.rbac.authorization.k8s.io/kueue-xgboostjob-viewer-role serverside-applied
+rolebinding.rbac.authorization.k8s.io/kueue-visibility-server-auth-reader serverside-applied
+rolebinding.rbac.authorization.k8s.io/kueue-leader-election-rolebinding serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/kueue-manager-rolebinding serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/kueue-metrics-auth-rolebinding serverside-applied
+configmap/kueue-manager-config serverside-applied
+secret/kueue-webhook-server-cert serverside-applied
+service/kueue-controller-manager-metrics-service serverside-applied
+service/kueue-visibility-server serverside-applied
+service/kueue-webhook-service serverside-applied
+deployment.apps/kueue-controller-manager serverside-applied
+apiservice.apiregistration.k8s.io/v1beta1.visibility.kueue.x-k8s.io serverside-applied
+mutatingwebhookconfiguration.admissionregistration.k8s.io/kueue-mutating-webhook-configuration serverside-applied
+validatingwebhookconfiguration.admissionregistration.k8s.io/kueue-validating-webhook-configuration serverside-applied
+Waiting for deployment "kueue-controller-manager" rollout to finish: 0 of 1 updated replicas are available...
+deployment "kueue-controller-manager" successfully rolled out
+NAME                      STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+kubefleet-control-plane   Ready    control-plane   45s   v1.33.1   172.18.0.3    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+kubefleet-worker          Ready    <none>          30s   v1.33.1   172.18.0.4    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+kubefleet-worker2         Ready    <none>          30s   v1.33.1   172.18.0.2    <none>        Debian GNU/Linux 12 (bookworm)   6.12.54-linuxkit   containerd://2.1.1
+Image: "kubefleet-worker:compat" with ID "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf" not yet present on node "kubefleet-worker2", loading...
+Image: "kubefleet-worker:compat" with ID "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf" not yet present on node "kubefleet-worker", loading...
+Image: "kubefleet-worker:compat" with ID "sha256:633c1125491999af621cd04bb22f554978eaa48befeac3cdeff26133815b19bf" not yet present on node "kubefleet-control-plane", loading...
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.manager
+#1 transferring dockerfile: 131B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 86B done
+#2 DONE 0.0s
+
+#3 [internal] load build context
+#3 transferring context: 58.97MB 0.5s done
+#3 DONE 0.5s
+
+#4 [1/1] COPY bin/manager-linux /manager
+#4 DONE 0.0s
+
+#5 exporting to image
+#5 exporting layers
+#5 exporting layers 1.3s done
+#5 exporting manifest sha256:b423c3a2be02e7f9828cc4b9940119ad908950920974f61a7fb942ed85cd5afb
+#5 exporting manifest sha256:b423c3a2be02e7f9828cc4b9940119ad908950920974f61a7fb942ed85cd5afb done
+#5 exporting config sha256:c1d88d79e809027939bf758dce528252a73a61f199ba7d1c44ae068cffa16845 done
+#5 naming to docker.io/library/kubefleet-manager:dev done
+#5 unpacking to docker.io/library/kubefleet-manager:dev
+#5 unpacking to docker.io/library/kubefleet-manager:dev 0.2s done
+#5 DONE 1.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/35vkjyqyf8v9diaf1wt1u0j3h
+Image: "kubefleet-manager:dev" with ID "sha256:b423c3a2be02e7f9828cc4b9940119ad908950920974f61a7fb942ed85cd5afb" not yet present on node "kubefleet-worker2", loading...
+Image: "kubefleet-manager:dev" with ID "sha256:b423c3a2be02e7f9828cc4b9940119ad908950920974f61a7fb942ed85cd5afb" not yet present on node "kubefleet-worker", loading...
+Image: "kubefleet-manager:dev" with ID "sha256:b423c3a2be02e7f9828cc4b9940119ad908950920974f61a7fb942ed85cd5afb" not yet present on node "kubefleet-control-plane", loading...
+namespace/cert-manager serverside-applied
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io serverside-applied
+serviceaccount/cert-manager-cainjector serverside-applied
+serviceaccount/cert-manager serverside-applied
+serviceaccount/cert-manager-webhook serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-cainjector serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-issuers serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificates serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-orders serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-challenges serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-cluster-view serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-view serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-edit serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests serverside-applied
+clusterrole.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-cainjector serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-issuers serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificates serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-orders serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-challenges serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews serverside-applied
+role.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection serverside-applied
+role.rbac.authorization.k8s.io/cert-manager:leaderelection serverside-applied
+role.rbac.authorization.k8s.io/cert-manager-tokenrequest serverside-applied
+role.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving serverside-applied
+rolebinding.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection serverside-applied
+rolebinding.rbac.authorization.k8s.io/cert-manager:leaderelection serverside-applied
+rolebinding.rbac.authorization.k8s.io/cert-manager-cert-manager-tokenrequest serverside-applied
+rolebinding.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving serverside-applied
+service/cert-manager-cainjector serverside-applied
+service/cert-manager serverside-applied
+service/cert-manager-webhook serverside-applied
+deployment.apps/cert-manager-cainjector serverside-applied
+deployment.apps/cert-manager serverside-applied
+deployment.apps/cert-manager-webhook serverside-applied
+mutatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook serverside-applied
+validatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook serverside-applied
+Waiting for deployment "cert-manager" rollout to finish: 0 of 1 updated replicas are available...
+deployment "cert-manager" successfully rolled out
+deployment "cert-manager-cainjector" successfully rolled out
+Waiting for deployment "cert-manager-webhook" rollout to finish: 0 of 1 updated replicas are available...
+deployment "cert-manager-webhook" successfully rolled out
+customresourcedefinition.apiextensions.k8s.io/batchruns.batch.kubefleet.dev serverside-applied
+customresourcedefinition.apiextensions.k8s.io/prerequisitegatepolicies.batch.kubefleet.dev serverside-applied
+prerequisitegatepolicy.batch.kubefleet.dev/default created
+resourceflavor.kueue.x-k8s.io/default created
+workloadpriorityclass.kueue.x-k8s.io/normal created
+namespace/team-a created
+serviceaccount/kubefleet-worker created
+clusterqueue.kueue.x-k8s.io/team-a created
+localqueue.kueue.x-k8s.io/team-a created
+namespace/team-b created
+serviceaccount/kubefleet-worker created
+clusterqueue.kueue.x-k8s.io/team-b created
+localqueue.kueue.x-k8s.io/team-b created
+namespace/team-c created
+serviceaccount/kubefleet-worker created
+clusterqueue.kueue.x-k8s.io/team-c created
+localqueue.kueue.x-k8s.io/team-c created
+namespace/kubefleet-system created
+serviceaccount/kubefleet-manager created
+clusterrole.rbac.authorization.k8s.io/kubefleet-manager created
+clusterrolebinding.rbac.authorization.k8s.io/kubefleet-manager created
+issuer.cert-manager.io/kubefleet-selfsigned created
+Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`.
+certificate.cert-manager.io/kubefleet-webhook created
+service/kubefleet-webhook created
+deployment.apps/kubefleet-manager created
+deployment.apps/kubefleet-manager patched
+certificate.cert-manager.io/kubefleet-webhook condition met
+Waiting for deployment "kubefleet-manager" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "kubefleet-manager" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "kubefleet-manager" rollout to finish: 1 old replicas are pending termination...
+deployment "kubefleet-manager" successfully rolled out
+validatingwebhookconfiguration.admissionregistration.k8s.io/kubefleet-batchrun-validation created
+validatingwebhookconfiguration.admissionregistration.k8s.io/kubefleet-batchrun-validation condition met
+admissioncheck.kueue.x-k8s.io/kubefleet-prerequisite created
+admissioncheck.kueue.x-k8s.io/kubefleet-prerequisite condition met
+clusterqueue.kueue.x-k8s.io/team-a condition met
+clusterqueue.kueue.x-k8s.io/team-b condition met
+clusterqueue.kueue.x-k8s.io/team-c condition met
+clusterrole.rbac.authorization.k8s.io/kubefleet-tenant created
+clusterrole.rbac.authorization.k8s.io/kubefleet-global-diagnostics created
+serviceaccount/kubefleet-tenant created
+rolebinding.rbac.authorization.k8s.io/kubefleet-tenant created
+serviceaccount/kubefleet-tenant created
+rolebinding.rbac.authorization.k8s.io/kubefleet-tenant created
+serviceaccount/kubefleet-tenant created
+rolebinding.rbac.authorization.k8s.io/kubefleet-tenant created
+namespace/kubefleet-monitoring created
+secret/grafana-auth created
+namespace/kubefleet-monitoring configured
+serviceaccount/prometheus created
+serviceaccount/kube-state-metrics created
+clusterrole.rbac.authorization.k8s.io/kubefleet-prometheus created
+clusterrole.rbac.authorization.k8s.io/kubefleet-kube-state-metrics created
+clusterrolebinding.rbac.authorization.k8s.io/kubefleet-prometheus created
+clusterrolebinding.rbac.authorization.k8s.io/kubefleet-kube-state-metrics created
+configmap/prometheus created
+configmap/grafana-provisioning created
+configmap/grafana-dashboard created
+deployment.apps/prometheus created
+service/prometheus created
+deployment.apps/grafana created
+service/grafana created
+deployment.apps/kube-state-metrics created
+service/kube-state-metrics created
+Waiting for deployment "prometheus" rollout to finish: 0 of 1 updated replicas are available...
+deployment "prometheus" successfully rolled out
+Waiting for deployment "grafana" rollout to finish: 0 of 1 updated replicas are available...
+deployment "grafana" successfully rolled out
+deployment "kube-state-metrics" successfully rolled out
+source scripts/env.sh; mkdir -p bin; for name in manager kubefleet worker loadgen collector; do go build -trimpath -o bin/$name ./cmd/$name; done
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.manager
+#1 transferring dockerfile: 131B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 86B done
+#2 DONE 0.0s
+
+#3 [internal] load build context
+#3 transferring context: 58.97MB 0.6s done
+#3 DONE 0.6s
+
+#4 [1/1] COPY bin/manager-linux /manager
+#4 DONE 0.2s
+
+#5 exporting to image
+#5 exporting layers
+#5 exporting layers 1.4s done
+#5 exporting manifest sha256:922feef85127c0ba0b17f800e05518e83803483623b7ea1b97e72b3621995c94
+#5 exporting manifest sha256:922feef85127c0ba0b17f800e05518e83803483623b7ea1b97e72b3621995c94 done
+#5 exporting config sha256:fbeb89ca452ca23cc6fff8f1ed7927c678938f7a9822b4f891d073c25ee969ea done
+#5 naming to docker.io/library/kubefleet-manager:faults done
+#5 unpacking to docker.io/library/kubefleet-manager:faults
+#5 unpacking to docker.io/library/kubefleet-manager:faults 0.3s done
+#5 DONE 1.7s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zcjl5sb4sipy4z4bk0notiayc
+Image: "kubefleet-manager:faults" with ID "sha256:922feef85127c0ba0b17f800e05518e83803483623b7ea1b97e72b3621995c94" not yet present on node "kubefleet-worker2", loading...
+Image: "kubefleet-manager:faults" with ID "sha256:922feef85127c0ba0b17f800e05518e83803483623b7ea1b97e72b3621995c94" not yet present on node "kubefleet-worker", loading...
+Image: "kubefleet-manager:faults" with ID "sha256:922feef85127c0ba0b17f800e05518e83803483623b7ea1b97e72b3621995c94" not yet present on node "kubefleet-control-plane", loading...

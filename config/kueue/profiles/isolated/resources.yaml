@@ -1,0 +1,282 @@
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "ResourceFlavor",
+  "metadata": {
+    "name": "workers"
+  },
+  "spec": {
+    "nodeLabels": {
+      "batch.kubefleet.dev/pool": "workers"
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "name": "team-a",
+    "labels": {
+      "pod-security.kubernetes.io/enforce": "restricted",
+      "batch.kubefleet.dev/project": "kubefleet"
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ServiceAccount",
+  "metadata": {
+    "name": "kubefleet-worker",
+    "namespace": "team-a"
+  },
+  "automountServiceAccountToken": false
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "ClusterQueue",
+  "metadata": {
+    "name": "team-a"
+  },
+  "spec": {
+    "namespaceSelector": {
+      "matchLabels": {
+        "kubernetes.io/metadata.name": "team-a"
+      }
+    },
+    "queueingStrategy": "BestEffortFIFO",
+    "resourceGroups": [
+      {
+        "coveredResources": [
+          "cpu",
+          "memory"
+        ],
+        "flavors": [
+          {
+            "name": "workers",
+            "resources": [
+              {
+                "name": "cpu",
+                "nominalQuota": "250m"
+              },
+              {
+                "name": "memory",
+                "nominalQuota": "512Mi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "preemption": {
+      "withinClusterQueue": "Never",
+      "reclaimWithinCohort": "Never"
+    },
+    "admissionChecks": [
+      "kubefleet-prerequisite"
+    ]
+  }
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "LocalQueue",
+  "metadata": {
+    "name": "team-a",
+    "namespace": "team-a"
+  },
+  "spec": {
+    "clusterQueue": "team-a"
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "name": "team-b",
+    "labels": {
+      "pod-security.kubernetes.io/enforce": "restricted",
+      "batch.kubefleet.dev/project": "kubefleet"
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ServiceAccount",
+  "metadata": {
+    "name": "kubefleet-worker",
+    "namespace": "team-b"
+  },
+  "automountServiceAccountToken": false
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "ClusterQueue",
+  "metadata": {
+    "name": "team-b"
+  },
+  "spec": {
+    "namespaceSelector": {
+      "matchLabels": {
+        "kubernetes.io/metadata.name": "team-b"
+      }
+    },
+    "queueingStrategy": "BestEffortFIFO",
+    "resourceGroups": [
+      {
+        "coveredResources": [
+          "cpu",
+          "memory"
+        ],
+        "flavors": [
+          {
+            "name": "workers",
+            "resources": [
+              {
+                "name": "cpu",
+                "nominalQuota": "250m"
+              },
+              {
+                "name": "memory",
+                "nominalQuota": "512Mi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "preemption": {
+      "withinClusterQueue": "Never",
+      "reclaimWithinCohort": "Never"
+    },
+    "admissionChecks": [
+      "kubefleet-prerequisite"
+    ]
+  }
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "LocalQueue",
+  "metadata": {
+    "name": "team-b",
+    "namespace": "team-b"
+  },
+  "spec": {
+    "clusterQueue": "team-b"
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "name": "team-c",
+    "labels": {
+      "pod-security.kubernetes.io/enforce": "restricted",
+      "batch.kubefleet.dev/project": "kubefleet"
+    }
+  }
+}
+---
+{
+  "apiVersion": "v1",
+  "kind": "ServiceAccount",
+  "metadata": {
+    "name": "kubefleet-worker",
+    "namespace": "team-c"
+  },
+  "automountServiceAccountToken": false
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "ClusterQueue",
+  "metadata": {
+    "name": "team-c"
+  },
+  "spec": {
+    "namespaceSelector": {
+      "matchLabels": {
+        "kubernetes.io/metadata.name": "team-c"
+      }
+    },
+    "queueingStrategy": "BestEffortFIFO",
+    "resourceGroups": [
+      {
+        "coveredResources": [
+          "cpu",
+          "memory"
+        ],
+        "flavors": [
+          {
+            "name": "workers",
+            "resources": [
+              {
+                "name": "cpu",
+                "nominalQuota": "250m"
+              },
+              {
+                "name": "memory",
+                "nominalQuota": "512Mi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "preemption": {
+      "withinClusterQueue": "Never",
+      "reclaimWithinCohort": "Never"
+    },
+    "admissionChecks": [
+      "kubefleet-prerequisite"
+    ]
+  }
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "LocalQueue",
+  "metadata": {
+    "name": "team-c",
+    "namespace": "team-c"
+  },
+  "spec": {
+    "clusterQueue": "team-c"
+  }
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "WorkloadPriorityClass",
+  "metadata": {
+    "name": "low"
+  },
+  "value": 0,
+  "description": "KubeFleet low"
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "WorkloadPriorityClass",
+  "metadata": {
+    "name": "normal"
+  },
+  "value": 100,
+  "description": "KubeFleet normal"
+}
+---
+{
+  "apiVersion": "kueue.x-k8s.io/v1beta1",
+  "kind": "WorkloadPriorityClass",
+  "metadata": {
+    "name": "high"
+  },
+  "value": 1000,
+  "description": "KubeFleet high"
+}
